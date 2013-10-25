@@ -203,4 +203,36 @@ class RemoteAdapter implements RemoteAdapterInterface
 
         return $this->call($method, $params, true);
     }
+
+    /**
+     * @return string
+     */
+    public function __getLastRequestHeaders()
+    {
+        return $this->soapClient->__getLastRequestHeaders();
+    }
+
+    /**
+     * @return string
+     */
+    public function __getLastRequest()
+    {
+        return $this->soapClient->__getLastRequest();
+    }
+
+    /**
+     * @return string
+     */
+    public function __getLastResponseHeaders()
+    {
+        return $this->soapClient->__getLastResponseHeaders();
+    }
+
+    /**
+     * @return string
+     */
+    public function __getLastResponse()
+    {
+        return $this->soapClient->__getLastResponse();
+    }
 }
