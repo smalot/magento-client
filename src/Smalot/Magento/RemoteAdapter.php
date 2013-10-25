@@ -134,6 +134,11 @@ class RemoteAdapter implements RemoteAdapterInterface
      */
     public function ping()
     {
+        // Force login.
+        if (is_null($this->sessionId) && $this->autoLogin) {
+            $this->login();
+        }
+
         $info = $this->call('magentoInfo', array(), false);
 
         return (is_object($info) || is_array($info));
