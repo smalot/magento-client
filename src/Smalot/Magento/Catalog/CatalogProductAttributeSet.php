@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * @file
+ *          Magento API Client (SOAP v2 - standard).
+ *          Allows wrappers for each call, dependencies injections
+ *          and code completion.
+ *
+ * @author  Sébastien MALOT <sebastien@malot.fr>
+ * @license GPL-2.0
+ * @url     <https://github.com/smalot/magento-client>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Smalot\Magento\Catalog;
 
@@ -16,16 +29,21 @@ class CatalogProductAttributeSet extends MagentoModuleAbstract
     /**
      * Allows you to add an existing attribute to an attribute set.
      *
-     * @param  string    $attributeId
-     * @param  string    $attributeSetId
-     * @param string $attributeGroupId
-     * @param string $sortOrder
+     * @param  string $attributeId
+     * @param  string $attributeSetId
+     * @param string  $attributeGroupId
+     * @param string  $sortOrder
      *
      * @return mixed
      */
     public function attributeSet($attributeId, $attributeSetId, $attributeGroupId = null, $sortOrder = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeSetAttributeAdd($attributeId, $attributeSetId, $attributeGroupId, $sortOrder);
+        return $this->remoteAdapter->catalogProductAttributeSetAttributeAdd(
+            $attributeId,
+            $attributeSetId,
+            $attributeGroupId,
+            $sortOrder
+        );
     }
 
     /**
