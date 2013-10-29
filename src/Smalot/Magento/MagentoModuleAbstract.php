@@ -18,6 +18,11 @@ namespace Smalot\Magento;
 
 use Smalot\Magento\RemoteAdapterInterface;
 
+/**
+ * Class MagentoModuleAbstract
+ *
+ * @package Smalot\Magento
+ */
 abstract class MagentoModuleAbstract
 {
     /**

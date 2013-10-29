@@ -16,6 +16,11 @@
 
 namespace Smalot\Magento;
 
+/**
+ * Interface RemoteAdapterInterface
+ *
+ * @package Smalot\Magento
+ */
 interface RemoteAdapterInterface
 {
 
