@@ -16,7 +16,6 @@
 
 namespace Smalot\Magento\Order;
 
-use mageekguy\atoum\tests\units\asserters\string;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**

@@ -18,9 +18,16 @@ namespace Smalot\Magento\CustomerBalance;
 
 use Smalot\Magento\MagentoModuleAbstract;
 
+/**
+ * Class StoreCredit
+ *
+ * @package Smalot\Magento\CustomerBalance
+ */
 class StoreCredit extends MagentoModuleAbstract
 {
     /**
+     * Allows you to retrieve the customer store credit balance amount.
+     *
      * @param string $customerId
      * @param string $websiteId
      *
@@ -32,6 +39,8 @@ class StoreCredit extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to retrieve the customer store credit history information.
+     *
      * @param string $customerId
      * @param string $websiteId
      *

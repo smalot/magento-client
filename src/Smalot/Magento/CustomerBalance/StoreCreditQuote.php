@@ -18,9 +18,16 @@ namespace Smalot\Magento\CustomerBalance;
 
 use Smalot\Magento\MagentoModuleAbstract;
 
+/**
+ * Class StoreCreditQuote
+ *
+ * @package Smalot\Magento\CustomerBalance
+ */
 class StoreCreditQuote extends MagentoModuleAbstract
 {
     /**
+     * Allows you to remove store credit amount from the shopping cart (quote) and increase the customer store credit.
+     *
      * @param string $quoteId
      * @param string $store
      *
@@ -32,6 +39,8 @@ class StoreCreditQuote extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to set amount from the customer store credit to the shopping cart.
+     *
      * @param string $quoteId
      * @param string $store
      *

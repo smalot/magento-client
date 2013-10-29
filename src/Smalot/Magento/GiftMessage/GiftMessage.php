@@ -26,6 +26,8 @@ use Smalot\Magento\MagentoModuleAbstract;
 class GiftMessage extends MagentoModuleAbstract
 {
     /**
+     * Allows you to set a global gift message for the shopping cart (quote).
+     *
      * @param string $quoteId
      * @param array  $giftMessage
      * @param string $store
@@ -38,6 +40,8 @@ class GiftMessage extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to set a gift message for an item in the shopping cart (quote).
+     *
      * @param string $quoteItemId
      * @param array  $giftMessage
      * @param string $store
@@ -50,6 +54,8 @@ class GiftMessage extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to set a gift message for a product in the shopping cart (quote).
+     *
      * @param string $quoteId
      * @param array  $productsAndMessages
      * @param string $store

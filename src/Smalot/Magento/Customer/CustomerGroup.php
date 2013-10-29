@@ -14,3 +14,24 @@
  * file that was distributed with this source code.
  */
 
+namespace Smalot\Magento\Customer;
+
+use Smalot\Magento\MagentoModuleAbstract;
+
+/**
+ * Class CustomerGroup
+ *
+ * @package Smalot\Magento\Customer
+ */
+class CustomerGroup extends MagentoModuleAbstract
+{
+    /**
+     * Retrieve the list of customer groups.
+     *
+     * @return mixed
+     */
+    public function getGroupList()
+    {
+        return $this->remoteAdapter->customerGroupList();
+    }
+}
