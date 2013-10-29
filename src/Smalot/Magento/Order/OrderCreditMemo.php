@@ -14,19 +14,27 @@
  * file that was distributed with this source code.
  */
 
-namespace Smalot\Magento\Sales;
+namespace Smalot\Magento\Order;
 
 use Smalot\Magento\MagentoModuleAbstract;
 
-class SalesOrderCreditMemo extends MagentoModuleAbstract
+/**
+ * Class OrderCreditMemo
+ *
+ * @package Smalot\Magento\Order
+ */
+class OrderCreditMemo extends MagentoModuleAbstract
 {
     /**
+     * Allows you to add a new comment to an existing credit memo.
+     * Email notification can be sent to the user email.
+     *
      * @param string $creditmemoIncrementId
      * @param string $comment
-     * @param int    $notifyCustomer
-     * @param int    $includeComment
+     * @param string $notifyCustomer
+     * @param string $includeComment
      *
-     * @return bool
+     * @return int
      */
     public function addComment($creditmemoIncrementId, $comment = null, $notifyCustomer = null, $includeComment = null)
     {
@@ -39,9 +47,11 @@ class SalesOrderCreditMemo extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to cancel an existing credit memo.
+     *
      * @param string $creditmemoIncrementId
      *
-     * @return bool
+     * @return int
      */
     public function cancel($creditmemoIncrementId)
     {
@@ -49,6 +59,9 @@ class SalesOrderCreditMemo extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to create a new credit memo for the invoiced order.
+     * Comments can be added and an email notification can be sent to the user email.
+     *
      * @param string $orderIncrementId
      * @param array  $creditmemoData
      * @param string $comment
@@ -77,6 +90,8 @@ class SalesOrderCreditMemo extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to retrieve full information about the specified credit memo.
+     *
      * @param string $creditmemoIncrementId
      *
      * @return array
@@ -87,6 +102,8 @@ class SalesOrderCreditMemo extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to retrieve the list of credit memos by filters.
+     *
      * @param array $filters
      *
      * @return array

@@ -14,13 +14,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Smalot\Magento\Sales;
+namespace Smalot\Magento\Order;
 
 use Smalot\Magento\MagentoModuleAbstract;
 
-class SalesOrder extends MagentoModuleAbstract
+/**
+ * Class Order
+ *
+ * @package Smalot\Magento\Order
+ */
+class Order extends MagentoModuleAbstract
 {
     /**
+     * Allows you to add a new comment to the order.
+     *
      * @param string $orderIncrementId
      * @param string $status
      * @param string $comment
@@ -34,6 +41,8 @@ class SalesOrder extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to cancel the required order.
+     *
      * @param string $orderIncrementId
      *
      * @return bool
@@ -44,6 +53,8 @@ class SalesOrder extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to place the required order on hold.
+     *
      * @param string $orderIncrementId
      *
      * @return bool
@@ -54,6 +65,8 @@ class SalesOrder extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to retrieve the required order information.
+     *
      * @param string $orderIncrementId
      *
      * @return array
@@ -64,16 +77,20 @@ class SalesOrder extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to retrieve the list of orders. Additional filters can be applied.
+     *
      * @param array $filters
      *
      * @return array
      */
     public function getList($filters)
     {
-        return $this->remoteAdapter->salesOrderList($orderIncrementId);
+        return $this->remoteAdapter->salesOrderList($filters);
     }
 
     /**
+     * Allows you to unhold the required order.
+     *
      * @param string $orderIncrementId
      *
      * @return bool

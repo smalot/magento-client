@@ -41,7 +41,7 @@ class StockItem extends MagentoModuleAbstract
      * Allows you to update the required product stock data.
      *
      * @param string $productId
-     * @param array $data
+     * @param array  $data
      *
      * @return mixed
      */

@@ -18,6 +18,11 @@ namespace Smalot\Magento\GiftMessage;
 
 use Smalot\Magento\MagentoModuleAbstract;
 
+/**
+ * Class GiftMessage
+ *
+ * @package Smalot\Magento\GiftMessage
+ */
 class GiftMessage extends MagentoModuleAbstract
 {
     /**

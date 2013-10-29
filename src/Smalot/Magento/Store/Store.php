@@ -26,6 +26,8 @@ use Smalot\Magento\MagentoModuleAbstract;
 class Store extends MagentoModuleAbstract
 {
     /**
+     * Allows you to retrieve the list of store views.
+     *
      * @return array
      */
     public function getList()
@@ -34,9 +36,11 @@ class Store extends MagentoModuleAbstract
     }
 
     /**
+     * Allows you to retrieve information about the required store view.
+     *
      * @param string $storeId
      *
-     * @return array
+     * @return mixed
      */
     public function getInfo($storeId = null)
     {

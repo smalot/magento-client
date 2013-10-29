@@ -18,10 +18,17 @@ namespace Smalot\Magento\Core;
 
 use Smalot\Magento\MagentoModuleAbstract;
 
+/**
+ * Class Magento
+ *
+ * @package Smalot\Magento\Core
+ */
 class Magento extends MagentoModuleAbstract
 {
     /**
-     * @return array
+     * Allows you to retrieve information about Magento version and edition.
+     *
+     * @return mixed
      */
     public function getInfo()
     {
