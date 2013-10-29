@@ -14,3 +14,41 @@
  * file that was distributed with this source code.
  */
 
+namespace Smalot\Magento\Catalog;
+
+use Smalot\Magento\MagentoModuleAbstract;
+
+/**
+ * Class CatalogProductTierPrice
+ *
+ * @package Smalot\Magento\Catalog
+ */
+class CatalogProductTierPrice extends MagentoModuleAbstract
+{
+    /**
+     * Allows you to retrieve information about product tier prices.
+     *
+     * @param string $productId
+     * @param string $identifierType
+     *
+     * @return mixed
+     */
+    public function getInfo($productId, $identifierType = null)
+    {
+        return $this->remoteAdapter->catalogProductAttributeTierPriceInfo($productId, $identifierType);
+    }
+
+    /**
+     * Allows you to update the product tier prices.
+     *
+     * @param string $productId
+     * @param array  $tierPrices
+     * @param string $identifierType
+     *
+     * @return mixed
+     */
+    public function update($productId, $tierPrices, $identifierType = null)
+    {
+        return $this->remoteAdapter->catalogProductAttributeTierPriceUpdate($productId, $tierPrices, $identifierType);
+    }
+}

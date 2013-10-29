@@ -14,3 +14,82 @@
  * file that was distributed with this source code.
  */
 
+namespace Smalot\Magento\Catalog;
+
+use Smalot\Magento\MagentoModuleAbstract;
+
+/**
+ * Class CatalogProductCustomOptionValue
+ *
+ * @package Smalot\Magento\Catalog
+ */
+class CatalogProductCustomOptionValue extends MagentoModuleAbstract
+{
+    /**
+     * Allows you to add a new custom option value to a custom option.
+     * Note that the custom option value can be added only to the option with the Select Input Type.
+     *
+     * @param string $optionId
+     * @param array  $data
+     * @param string $store
+     *
+     * @return bool
+     */
+    public function add($optionId, $data, $store = null)
+    {
+        return $this->remoteAdapter->catalogProductCustomOptionValueAdd($optionId, $data, $store);
+    }
+
+    /**
+     * Allows you to retrieve full information about the specified product custom option value.
+     *
+     * @param string $valueId
+     * @param string $store
+     *
+     * @return mixed
+     */
+    public function getInfo($valueId, $store = null)
+    {
+        return $this->remoteAdapter->catalogProductCustomOptionValueInfo($valueId, $store);
+    }
+
+    /**
+     * Allows you to retrieve the list of product custom option values.
+     * Note that the method is available only for the option Select Input Type.
+     *
+     * @param string $optionId
+     * @param string $store
+     *
+     * @return array
+     */
+    public function getList($optionId, $store = null)
+    {
+        return $this->remoteAdapter->catalogProductCustomOptionValueList($optionId, $store);
+    }
+
+    /**
+     * Allows you to remove the custom option value from a product.
+     *
+     * @param string $valueId
+     *
+     * @return mixed
+     */
+    public function remove($valueId)
+    {
+        return $this->remoteAdapter->catalogProductCustomOptionValueRemove($valueId);
+    }
+
+    /**
+     * Allows you to update the product custom option value.
+     *
+     * @param string $valueId
+     * @param array  $data
+     * @param string $store
+     *
+     * @return mixed
+     */
+    public function update($valueId, $data, $store = null)
+    {
+        return $this->remoteAdapter->catalogProductCustomOptionValueUpdate($valueId, $data, $store);
+    }
+}

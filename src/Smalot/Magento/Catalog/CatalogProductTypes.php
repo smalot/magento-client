@@ -14,3 +14,24 @@
  * file that was distributed with this source code.
  */
 
+namespace Smalot\Magento\Catalog;
+
+use Smalot\Magento\MagentoModuleAbstract;
+
+/**
+ * Class CatalogProductType
+ *
+ * @package Smalot\Magento\Catalog
+ */
+class CatalogProductType extends MagentoModuleAbstract
+{
+    /**
+     * Allows you to retrieve the list of product types.
+     *
+     * @return array
+     */
+    public function getList()
+    {
+        return $this->remoteAdapter->catalogProductTypeList();
+    }
+}

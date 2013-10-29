@@ -16,7 +16,6 @@
 
 namespace Smalot\Magento\Catalog;
 
-use mageekguy\atoum\asserters\string;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -29,10 +28,10 @@ class CatalogProductAttributeSet extends MagentoModuleAbstract
     /**
      * Allows you to add an existing attribute to an attribute set.
      *
-     * @param  string $attributeId
-     * @param  string $attributeSetId
-     * @param string  $attributeGroupId
-     * @param string  $sortOrder
+     * @param string $attributeId
+     * @param string $attributeSetId
+     * @param string $attributeGroupId
+     * @param string $sortOrder
      *
      * @return mixed
      */
