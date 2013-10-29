@@ -14,10 +14,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Smalot\Magento\StoreView;
+namespace Smalot\Magento\Store;
 
 use Smalot\Magento\MagentoModuleAbstract;
 
+/**
+ * Class Store
+ *
+ * @package Smalot\Magento\StoreView
+ */
 class Store extends MagentoModuleAbstract
 {
     /**
