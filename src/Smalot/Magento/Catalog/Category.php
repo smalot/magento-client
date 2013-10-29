@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogCategory
+ * Class Category
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogCategory extends MagentoModuleAbstract
+class Category extends MagentoModuleAbstract
 {
     /**
      * Retrieve the list of products assigned to a required category.

@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProductCustomOptionValue
+ * Class ProductCustomOptionValue
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProductCustomOptionValue extends MagentoModuleAbstract
+class ProductCustomOptionValue extends MagentoModuleAbstract
 {
     /**
      * Allows you to add a new custom option value to a custom option.

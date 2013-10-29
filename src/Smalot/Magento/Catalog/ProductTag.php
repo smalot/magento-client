@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProductTag
+ * Class ProductTag
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProductTag extends MagentoModuleAbstract
+class ProductTag extends MagentoModuleAbstract
 {
     /**
      * Allows you to add one or more tags to a product.

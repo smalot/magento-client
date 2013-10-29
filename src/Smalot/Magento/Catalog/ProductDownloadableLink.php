@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProductDownloadableLink
+ * Class ProductDownloadableLink
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProductDownloadableLink extends MagentoModuleAbstract
+class ProductDownloadableLink extends MagentoModuleAbstract
 {
     const TYPE_SAMPLE = 'sample';
 

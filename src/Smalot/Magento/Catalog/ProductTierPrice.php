@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProductTierPrice
+ * Class ProductTierPrice
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProductTierPrice extends MagentoModuleAbstract
+class ProductTierPrice extends MagentoModuleAbstract
 {
     /**
      * Allows you to retrieve information about product tier prices.

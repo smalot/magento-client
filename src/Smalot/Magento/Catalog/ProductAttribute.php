@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProductAttribute
+ * Class ProductAttribute
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProductAttribute extends MagentoModuleAbstract
+class ProductAttribute extends MagentoModuleAbstract
 {
     /**
      * Allows you to add a new option for attributes with selectable fields.

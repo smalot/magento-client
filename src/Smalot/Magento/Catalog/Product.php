@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProduct
+ * Class Product
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProduct extends MagentoModuleAbstract
+class Product extends MagentoModuleAbstract
 {
     /**
      * Allows you to create a new product and return ID of the created product.

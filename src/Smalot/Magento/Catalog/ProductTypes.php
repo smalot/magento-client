@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProductType
+ * Class ProductType
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProductType extends MagentoModuleAbstract
+class ProductType extends MagentoModuleAbstract
 {
     /**
      * Allows you to retrieve the list of product types.

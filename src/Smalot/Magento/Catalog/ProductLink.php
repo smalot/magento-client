@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProductLink
+ * Class ProductLink
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProductLink extends MagentoModuleAbstract
+class ProductLink extends MagentoModuleAbstract
 {
     const TYPE_CROSS_SELL = 'cross-sell';
 

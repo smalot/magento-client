@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogCategoryAttributes
+ * Class CategoryAttributes
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogCategoryAttributes extends MagentoModuleAbstract
+class CategoryAttributes extends MagentoModuleAbstract
 {
     /**
      * Allows you to set/get the current store view.

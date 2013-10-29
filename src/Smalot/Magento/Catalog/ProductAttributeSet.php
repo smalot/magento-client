@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProductAttributeSet
+ * Class ProductAttributeSet
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProductAttributeSet extends MagentoModuleAbstract
+class ProductAttributeSet extends MagentoModuleAbstract
 {
     /**
      * Allows you to add an existing attribute to an attribute set.

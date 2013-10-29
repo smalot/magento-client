@@ -19,11 +19,11 @@ namespace Smalot\Magento\Catalog;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
- * Class CatalogProductMedia
+ * Class ProductMedia
  *
  * @package Smalot\Magento\Catalog
  */
-class CatalogProductMedia extends MagentoModuleAbstract
+class ProductMedia extends MagentoModuleAbstract
 {
     /**
      * Allows you to upload a new product image.
