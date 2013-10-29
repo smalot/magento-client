@@ -73,17 +73,21 @@ Here is a sample code to load tree of categories of the `default` website.
 ```php
 <?php
 
+// Include composer's autoloader mecanism
 include 'vendor/autoload.php';
 
+// Init config
 $wsdl    = 'http://domainname.tld/index.php/api/v2_soap/?wsdl';
 $apiUser = 'username';
 $apiKey  = 'xxxxxxxxxxxxxxxxxxx';
 
+// Create remote adapter which wrap soapclient
 $adapter  = new \Smalot\Magento\RemoteAdapter($wsdl, $apiUser, $apiKey);
+
+// Call any module's class
 $category = new \Smalot\Magento\Catalog\Category($adapter);
 $tree    = $catalogCategory->getTree();
 
 var_dump($tree);
 
-?>
 ```
