@@ -32,12 +32,12 @@ Module's names has been standardized to be more clean :
 * Directory
 * Order
 * CustomerBalance
-* GiftCard (todo)
+* GiftCard (*todo*)
 * GiftMessage
 * Core
 * Store
 
-Note : `login` and `logout` calls are made only if needed.
+**Note :** `login` and `logout` calls are made only if needed.
 
 # Installation
 
