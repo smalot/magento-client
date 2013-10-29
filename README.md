@@ -41,7 +41,23 @@ Note : `login` and `logout` calls are made only if needed.
 
 # Installation
 
+Download using [composer](http://getcomposer.org/):
 
+```js
+{
+    "require": {
+        "smalot/magento-client": "*"
+    }
+}
+```
+
+Now tell composer to download the bundle by running the command:
+
+``` bash
+$ php composer.phar update smalot/magento-client
+```
+
+Composer will install the bundle to your project's `vendor/smalot` directory and `create`/`update` an autoload file.
 
 # License
 
