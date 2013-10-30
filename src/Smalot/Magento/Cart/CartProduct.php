@@ -36,7 +36,7 @@ class CartProduct extends MagentoModuleAbstract
      */
     public function add($quoteId, $productsData, $storeId = null)
     {
-        return $this->remoteAdapter->shoppingCartProductAdd($quoteId, $productsData, $storeId);
+        return $this->remoteAdapter->call('shoppingCartProductAdd', array($quoteId, $productsData, $storeId));
     }
 
     /**
@@ -49,7 +49,7 @@ class CartProduct extends MagentoModuleAbstract
      */
     public function getList($quoteId, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartProductList($quoteId, $store);
+        return $this->remoteAdapter->call('shoppingCartProductList', array($quoteId, $store));
     }
 
     /**
@@ -63,7 +63,10 @@ class CartProduct extends MagentoModuleAbstract
      */
     public function moveToCustomerQuote($quoteId, $productsData, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartProductMoveToCustomerQuote($quoteId, $productsData, $store);
+        return $this->remoteAdapter->call(
+            'shoppingCartProductMoveToCustomerQuote',
+            array($quoteId, $productsData, $store)
+        );
     }
 
     /**
@@ -77,7 +80,7 @@ class CartProduct extends MagentoModuleAbstract
      */
     public function remove($quoteId, $productsData, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartProductRemove($quoteId, $productsData, $store);
+        return $this->remoteAdapter->call('shoppingCartProductRemove', array($quoteId, $productsData, $store));
     }
 
     /**
@@ -91,6 +94,6 @@ class CartProduct extends MagentoModuleAbstract
      */
     public function update($quoteId, $productsData, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartProductUpdate($quoteId, $productsData, $store);
+        return $this->remoteAdapter->call('shoppingCartProductUpdate', array($quoteId, $productsData, $store));
     }
 }

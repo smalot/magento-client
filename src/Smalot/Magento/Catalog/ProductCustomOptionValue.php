@@ -37,7 +37,7 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      */
     public function add($optionId, $data, $store = null)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionValueAdd($optionId, $data, $store);
+        return $this->remoteAdapter->call('catalogProductCustomOptionValueAdd', array($optionId, $data, $store));
     }
 
     /**
@@ -50,7 +50,7 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      */
     public function getInfo($valueId, $store = null)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionValueInfo($valueId, $store);
+        return $this->remoteAdapter->call('catalogProductCustomOptionValueInfo', array($valueId, $store));
     }
 
     /**
@@ -64,7 +64,7 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      */
     public function getList($optionId, $store = null)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionValueList($optionId, $store);
+        return $this->remoteAdapter->call('catalogProductCustomOptionValueList', array($optionId, $store));
     }
 
     /**
@@ -76,7 +76,7 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      */
     public function remove($valueId)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionValueRemove($valueId);
+        return $this->remoteAdapter->call('catalogProductCustomOptionValueRemove', array($valueId));
     }
 
     /**
@@ -90,6 +90,6 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      */
     public function update($valueId, $data, $store = null)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionValueUpdate($valueId, $data, $store);
+        return $this->remoteAdapter->call('catalogProductCustomOptionValueUpdate', array($valueId, $data, $store));
     }
 }

@@ -34,7 +34,7 @@ class Category extends MagentoModuleAbstract
      */
     public function getAssignedProducts($categoryId)
     {
-        return $this->remoteAdapter->catalogCategoryAssignedProducts($categoryId);
+        return $this->remoteAdapter->call('catalogCategoryAssignedProducts', array($categoryId));
     }
 
     /**
@@ -49,7 +49,10 @@ class Category extends MagentoModuleAbstract
      */
     public function assignProduct($categoryId, $productId, $position = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogCategoryAssignProduct($categoryId, $productId, $position, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogCategoryAssignProduct',
+            array($categoryId, $productId, $position, $identifierType)
+        );
     }
 
     /**
@@ -63,7 +66,7 @@ class Category extends MagentoModuleAbstract
      */
     public function create($parentId, $categoryData, $storeView = null)
     {
-        return $this->remoteAdapter->catalogCategoryCreate($parentId, $categoryData, $storeView);
+        return $this->remoteAdapter->call('catalogCategoryCreate', array($parentId, $categoryData, $storeView));
     }
 
     /**
@@ -75,7 +78,7 @@ class Category extends MagentoModuleAbstract
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->catalogCategoryCurrentStore($storeView);
+        return $this->remoteAdapter->call('catalogCategoryCurrentStore', array($storeView));
     }
 
     /**
@@ -87,7 +90,7 @@ class Category extends MagentoModuleAbstract
      */
     public function delete($categoryId)
     {
-        return $this->remoteAdapter->catalogCategoryDelete($categoryId);
+        return $this->remoteAdapter->call('catalogCategoryDelete', array($categoryId));
     }
 
     /**
@@ -101,7 +104,7 @@ class Category extends MagentoModuleAbstract
      */
     public function getInfo($categoryId, $storeView = null, $attributes = null)
     {
-        return $this->remoteAdapter->catalogCategoryInfo($categoryId, $storeView, $attributes);
+        return $this->remoteAdapter->call('catalogCategoryInfo', array($categoryId, $storeView, $attributes));
     }
 
     /**
@@ -115,7 +118,7 @@ class Category extends MagentoModuleAbstract
      */
     public function getLevel($website, $storeView = null, $parentCategory = null)
     {
-        return $this->remoteAdapter->catalogCategoryLevel($website, $storeView, $parentCategory);
+        return $this->remoteAdapter->call('catalogCategoryLevel', array($website, $storeView, $parentCategory));
     }
 
     /**
@@ -129,7 +132,7 @@ class Category extends MagentoModuleAbstract
      */
     public function move($categoryId, $parentId, $afterId = null)
     {
-        return $this->remoteAdapter->catalogCategoryMove($categoryId, $parentId, $afterId);
+        return $this->remoteAdapter->call('catalogCategoryMove', array($categoryId, $parentId, $afterId));
     }
 
     /**
@@ -143,7 +146,10 @@ class Category extends MagentoModuleAbstract
      */
     public function removeProduct($categoryId, $productId, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogCategoryRemoveProduct($categoryId, $productId, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogCategoryRemoveProduct',
+            array($categoryId, $productId, $identifierType)
+        );
     }
 
     /**
@@ -156,7 +162,7 @@ class Category extends MagentoModuleAbstract
      */
     public function getTree($parentId = null, $storeView = null)
     {
-        return $this->remoteAdapter->catalogCategoryTree($parentId, $storeView);
+        return $this->remoteAdapter->call('catalogCategoryTree', array($parentId, $storeView));
     }
 
     /**
@@ -170,7 +176,7 @@ class Category extends MagentoModuleAbstract
      */
     public function update($categoryId, $categoryData, $storeView = null)
     {
-        return $this->remoteAdapter->catalogCategoryUpdate($categoryId, $categoryData, $storeView);
+        return $this->remoteAdapter->call('catalogCategoryUpdate', array($categoryId, $categoryData, $storeView));
     }
 
     /**
@@ -185,6 +191,9 @@ class Category extends MagentoModuleAbstract
      */
     public function updateProduct($categoryId, $productId, $position = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogCategoryUpdateProduct($categoryId, $productId, $position, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogCategoryUpdateProduct',
+            array($categoryId, $productId, $position, $identifierType)
+        );
     }
 }

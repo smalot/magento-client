@@ -62,7 +62,7 @@ class ProductLink extends MagentoModuleAbstract
      */
     public function getAttributes($type)
     {
-        return $this->remoteAdapter->catalogProductLinkAttributes($type);
+        return $this->remoteAdapter->call('catalogProductLinkAttributes', array($type));
     }
 
     /**
@@ -76,7 +76,7 @@ class ProductLink extends MagentoModuleAbstract
      */
     public function getList($type, $productId, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductLinkList($type, $productId, $identifierType);
+        return $this->remoteAdapter->call('catalogProductLinkList', array($type, $productId, $identifierType));
     }
 
     /**
@@ -91,7 +91,10 @@ class ProductLink extends MagentoModuleAbstract
      */
     public function remove($type, $productId, $linkedProductId, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductLinkRemove($type, $productId, $linkedProductId, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductLinkRemove',
+            array($type, $productId, $linkedProductId, $identifierType)
+        );
     }
 
     /**
@@ -101,7 +104,7 @@ class ProductLink extends MagentoModuleAbstract
      */
     public function getTypes()
     {
-        return $this->remoteAdapter->catalogProductLinkTypes();
+        return $this->remoteAdapter->call('catalogProductLinkTypes', array());
     }
 
     /**

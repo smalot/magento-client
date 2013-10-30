@@ -32,6 +32,6 @@ class CustomerGroup extends MagentoModuleAbstract
      */
     public function getGroupList()
     {
-        return $this->remoteAdapter->customerGroupList();
+        return $this->remoteAdapter->call('customerGroupList', array());
     }
 }

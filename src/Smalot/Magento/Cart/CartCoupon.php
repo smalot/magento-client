@@ -37,7 +37,7 @@ class CartCoupon extends MagentoModuleAbstract
      */
     public function add($quoteId, $couponCode, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartCouponAdd($quoteId, $couponCode, $store);
+        return $this->remoteAdapter->call('shoppingCartCouponAdd', array($quoteId, $couponCode, $store));
     }
 
     /**
@@ -50,6 +50,6 @@ class CartCoupon extends MagentoModuleAbstract
      */
     public function remove($quoteId, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartCouponRemove($quoteId, $store);
+        return $this->remoteAdapter->call('shoppingCartCouponRemove', array($quoteId, $store));
     }
 }

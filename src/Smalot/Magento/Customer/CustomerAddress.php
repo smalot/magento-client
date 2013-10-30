@@ -28,14 +28,14 @@ class CustomerAddress extends MagentoModuleAbstract
     /**
      * Create a new address for the customer.
      *
-     * @param int $customerId
+     * @param int   $customerId
      * @param array $addressData
      *
      * @return mixed
      */
     public function create($customerId, $addressData)
     {
-        return $this->remoteAdapter->customerAddressCreate($customerId, $addressData);
+        return $this->remoteAdapter->call('customerAddressCreate', array($customerId, $addressData));
     }
 
     /**
@@ -47,7 +47,7 @@ class CustomerAddress extends MagentoModuleAbstract
      */
     public function delete($addressId)
     {
-        return $this->remoteAdapter->customerAddressDelete($addressId);
+        return $this->remoteAdapter->call('customerAddressDelete', array($addressId));
     }
 
     /**
@@ -59,7 +59,7 @@ class CustomerAddress extends MagentoModuleAbstract
      */
     public function getInfo($addressId)
     {
-        return $this->remoteAdapter->customerAddressInfo($addressId);
+        return $this->remoteAdapter->call('customerAddressInfo', array($addressId));
     }
 
     /**
@@ -71,19 +71,19 @@ class CustomerAddress extends MagentoModuleAbstract
      */
     public function getList($customerId)
     {
-        return $this->remoteAdapter->customerAddressList($customerId);
+        return $this->remoteAdapter->call('customerAddressList', array($customerId));
     }
 
     /**
      * Update address data of the required customer.
      *
-     * @param int $addressId
+     * @param int   $addressId
      * @param array $addressData
      *
      * @return mixed
      */
     public function update($addressId, $addressData)
     {
-        return $this->remoteAdapter->customerAddressUpdate($addressId, $addressData);
+        return $this->remoteAdapter->call('customerAddressUpdate', array($addressId, $addressData));
     }
 }

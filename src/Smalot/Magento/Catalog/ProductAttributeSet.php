@@ -55,7 +55,10 @@ class ProductAttributeSet extends MagentoModuleAbstract
      */
     public function attributeRemove($attributeId, $attributeSetId)
     {
-        return $this->remoteAdapter->catalogProductAttributeSetAttributeRemove($attributeId, $attributeSetId);
+        return $this->remoteAdapter->call(
+            'catalogProductAttributeSetAttributeRemove',
+            array($attributeId, $attributeSetId)
+        );
     }
 
     /**
@@ -68,7 +71,7 @@ class ProductAttributeSet extends MagentoModuleAbstract
      */
     public function create($attributeSetName, $skeletonSetId)
     {
-        return $this->remoteAdapter->catalogProductAttributeSetCreate($attributeSetName, $skeletonSetId);
+        return $this->remoteAdapter->call('catalogProductAttributeSetCreate', array($attributeSetName, $skeletonSetId));
     }
 
     /**
@@ -81,7 +84,7 @@ class ProductAttributeSet extends MagentoModuleAbstract
      */
     public function groupAdd($attributeSetId, $groupName)
     {
-        return $this->remoteAdapter->catalogProductAttributeSetGroupAdd($attributeSetId, $groupName);
+        return $this->remoteAdapter->call('catalogProductAttributeSetGroupAdd', array($attributeSetId, $groupName));
     }
 
     /**
@@ -93,7 +96,7 @@ class ProductAttributeSet extends MagentoModuleAbstract
      */
     public function groupRemove($attributeGroupId)
     {
-        return $this->remoteAdapter->catalogProductAttributeSetGroupRemove($attributeGroupId);
+        return $this->remoteAdapter->call('catalogProductAttributeSetGroupRemove', array($attributeGroupId));
     }
 
     /**
@@ -106,7 +109,7 @@ class ProductAttributeSet extends MagentoModuleAbstract
      */
     public function groupRename($groupId, $groupName)
     {
-        return $this->remoteAdapter->catalogProductAttributeSetGroupRename($groupId, $groupName);
+        return $this->remoteAdapter->call('catalogProductAttributeSetGroupRename', array($groupId, $groupName));
     }
 
     /**
@@ -116,7 +119,7 @@ class ProductAttributeSet extends MagentoModuleAbstract
      */
     public function getList()
     {
-        return $this->remoteAdapter->catalogProductAttributeSetList();
+        return $this->remoteAdapter->call('catalogProductAttributeSetList', array());
     }
 
     /**
@@ -129,6 +132,9 @@ class ProductAttributeSet extends MagentoModuleAbstract
      */
     public function remove($attributeSetId, $forceProductsRemove)
     {
-        return $this->remoteAdapter->catalogProductAttributeSetRemove($attributeSetId, $forceProductsRemove);
+        return $this->remoteAdapter->call(
+            'catalogProductAttributeSetRemove',
+            array($attributeSetId, $forceProductsRemove)
+        );
     }
 }

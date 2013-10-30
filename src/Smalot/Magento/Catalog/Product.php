@@ -38,7 +38,7 @@ class Product extends MagentoModuleAbstract
      */
     public function create($type, $set, $sku, $productData, $storeView = null)
     {
-        return $this->remoteAdapter->catalogProductCreate($type, $set, $sku, $productData, $storeView);
+        return $this->remoteAdapter->call('catalogProductCreate', array($type, $set, $sku, $productData, $storeView));
     }
 
     /**
@@ -50,7 +50,7 @@ class Product extends MagentoModuleAbstract
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->catalogProductCurrentStore($storeView);
+        return $this->remoteAdapter->call('catalogProductCurrentStore', array($storeView));
     }
 
 
@@ -64,7 +64,7 @@ class Product extends MagentoModuleAbstract
      */
     public function delete($productId, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductDelete($productId, $identifierType);
+        return $this->remoteAdapter->call('catalogProductDelete', array($productId, $identifierType));
     }
 
     /**
@@ -78,7 +78,10 @@ class Product extends MagentoModuleAbstract
      */
     public function getSpecialPrice($productId, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductGetSpecialPrice($productId, $storeView, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductGetSpecialPrice',
+            array($productId, $storeView, $identifierType)
+        );
     }
 
     /**
@@ -93,20 +96,23 @@ class Product extends MagentoModuleAbstract
      */
     public function getInfo($productId, $storeView = null, $attributes = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductInfo($productId, $storeView, $attributes, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductInfo',
+            array($productId, $storeView, $attributes, $identifierType)
+        );
     }
 
     /**
      * Allows you to retrieve the list of products.
      *
-     * @param array  $filters
+     * @param array $filters
      * @param string $storeView
      *
      * @return mixed
      */
     public function getList($filters, $storeView = null)
     {
-        return $this->remoteAdapter->catalogProductList($filters, $storeView);
+        return $this->remoteAdapter->call('catalogProductList', array($filters, $storeView));
     }
 
     /**
@@ -120,7 +126,10 @@ class Product extends MagentoModuleAbstract
      */
     public function getListOfAdditionalAttributes($productType, $attributeSetId)
     {
-        return $this->remoteAdapter->catalogProductListOfAdditionalAttributes($productType, $attributeSetId);
+        return $this->remoteAdapter->call(
+            'catalogProductListOfAdditionalAttributes',
+            array($productType, $attributeSetId)
+        );
     }
 
     /**
@@ -166,6 +175,9 @@ class Product extends MagentoModuleAbstract
      */
     public function update($productId, $productData, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductUpdate($productId, $productData, $storeView, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductUpdate',
+            array($productId, $productData, $storeView, $identifierType)
+        );
     }
 }

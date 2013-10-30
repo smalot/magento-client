@@ -32,6 +32,6 @@ class ProductType extends MagentoModuleAbstract
      */
     public function getList()
     {
-        return $this->remoteAdapter->catalogProductTypeList();
+        return $this->remoteAdapter->call('catalogProductTypeList', array());
     }
 }

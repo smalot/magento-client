@@ -34,7 +34,7 @@ class StockItem extends MagentoModuleAbstract
      */
     public function getList($productIds)
     {
-        return $this->remoteAdapter->catalogInventoryStockItemList($productIds);
+        return $this->remoteAdapter->call('catalogInventoryStockItemList', array($productIds));
     }
 
     /**
@@ -47,6 +47,6 @@ class StockItem extends MagentoModuleAbstract
      */
     public function update($productId, $data)
     {
-        return $this->remoteAdapter->catalogInventoryStockItemUpdate($productId, $data);
+        return $this->remoteAdapter->call('catalogInventoryStockItemUpdate', array($productId, $data));
     }
 }

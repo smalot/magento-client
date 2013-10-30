@@ -32,7 +32,7 @@ class Store extends MagentoModuleAbstract
      */
     public function getList()
     {
-        return $this->remoteAdapter->storeList();
+        return $this->remoteAdapter->call('storeList', array());
     }
 
     /**
@@ -44,6 +44,6 @@ class Store extends MagentoModuleAbstract
      */
     public function getInfo($storeId = null)
     {
-        return $this->remoteAdapter->storeInfo($storeId);
+        return $this->remoteAdapter->call('storeInfo', array($storeId));
     }
 }

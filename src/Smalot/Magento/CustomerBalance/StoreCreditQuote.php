@@ -35,7 +35,7 @@ class StoreCreditQuote extends MagentoModuleAbstract
      */
     public function removeAmount($quoteId, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartCustomerbalanceRemoveAmount($quoteId, $store);
+        return $this->remoteAdapter->call('shoppingCartCustomerbalanceRemoveAmount', array($quoteId, $store));
     }
 
     /**
@@ -48,6 +48,6 @@ class StoreCreditQuote extends MagentoModuleAbstract
      */
     public function setAmount($quoteId, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartCustomerbalanceSetAmount($quoteId, $store);
+        return $this->remoteAdapter->call('shoppingCartCustomerbalanceSetAmount', array($quoteId, $store));
     }
 }

@@ -34,7 +34,7 @@ class CategoryAttributes extends MagentoModuleAbstract
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->catalogCategoryCurrentStore($storeView);
+        return $this->remoteAdapter->call('catalogCategoryCurrentStore', array($storeView));
     }
 
     /**
@@ -44,7 +44,7 @@ class CategoryAttributes extends MagentoModuleAbstract
      */
     public function getList()
     {
-        return $this->remoteAdapter->catalogCategoryAttributeList();
+        return $this->remoteAdapter->call('catalogCategoryAttributeList', array());
     }
 
     /**
@@ -57,6 +57,6 @@ class CategoryAttributes extends MagentoModuleAbstract
      */
     public function getOptions($attributeId, $storeView = null)
     {
-        return $this->remoteAdapter->catalogCategoryAttributeOptions($attributeId, $storeView);
+        return $this->remoteAdapter->call('catalogCategoryAttributeOptions', array($attributeId, $storeView));
     }
 }

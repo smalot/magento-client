@@ -35,7 +35,7 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function addOption($attribute, $data)
     {
-        return $this->remoteAdapter->catalogProductAttributeAddOption($attribute, $data);
+        return $this->remoteAdapter->call('catalogProductAttributeAddOption', array($attribute, $data));
     }
 
     /**
@@ -47,7 +47,7 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function create($data)
     {
-        return $this->remoteAdapter->catalogProductAttributeCreate($data);
+        return $this->remoteAdapter->call('catalogProductAttributeCreate', array($data));
     }
 
     /**
@@ -59,7 +59,7 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->catalogProductAttributeCurrentStore($storeView);
+        return $this->remoteAdapter->call('catalogProductAttributeCurrentStore', array($storeView));
     }
 
     /**
@@ -71,7 +71,7 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function getInfo($attribute)
     {
-        return $this->remoteAdapter->catalogProductAttributeInfo($attribute);
+        return $this->remoteAdapter->call('catalogProductAttributeInfo', array($attribute));
     }
 
     /**
@@ -83,7 +83,7 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function getList($setId)
     {
-        return $this->remoteAdapter->catalogProductAttributeList($setId);
+        return $this->remoteAdapter->call('catalogProductAttributeList', array($setId));
     }
 
     /**
@@ -96,7 +96,7 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function getOptions($attributeId, $storeView = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeOptions($attributeId, $storeView);
+        return $this->remoteAdapter->call('catalogProductAttributeOptions', array($attributeId, $storeView));
     }
 
     /**
@@ -108,7 +108,7 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function remove($attribute)
     {
-        return $this->remoteAdapter->catalogProductAttributeRemove($attribute);
+        return $this->remoteAdapter->call('catalogProductAttributeRemove', array($attribute));
     }
 
     /**
@@ -121,7 +121,7 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function removeOption($attribute, $optionId)
     {
-        return $this->remoteAdapter->catalogProductAttributeRemoveOption($attribute, $optionId);
+        return $this->remoteAdapter->call('catalogProductAttributeRemoveOption', array($attribute, $optionId));
     }
 
     /**
@@ -131,7 +131,7 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function getTypes()
     {
-        return $this->remoteAdapter->catalogProductAttributeTypes();
+        return $this->remoteAdapter->call('catalogProductAttributeTypes', array());
     }
 
     /**
@@ -144,6 +144,6 @@ class ProductAttribute extends MagentoModuleAbstract
      */
     public function update($attribute, $data)
     {
-        return $this->remoteAdapter->catalogProductAttributeUpdate($attribute, $data);
+        return $this->remoteAdapter->call('catalogProductAttributeUpdate', array($attribute, $data));
     }
 }

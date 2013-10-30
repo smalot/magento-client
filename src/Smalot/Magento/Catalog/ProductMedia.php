@@ -37,7 +37,10 @@ class ProductMedia extends MagentoModuleAbstract
      */
     public function create($product, $data, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeMediaCreate($product, $data, $storeView, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductAttributeMediaCreate',
+            array($product, $data, $storeView, $identifierType)
+        );
     }
 
     /**
@@ -49,7 +52,7 @@ class ProductMedia extends MagentoModuleAbstract
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->catalogProductAttributeMediaCurrentStore($storeView);
+        return $this->remoteAdapter->call('catalogProductAttributeMediaCurrentStore', array($storeView));
     }
 
     /**
@@ -64,7 +67,10 @@ class ProductMedia extends MagentoModuleAbstract
      */
     public function getInfo($productId, $file, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeMediaInfo($productId, $file, $storeView, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductAttributeMediaInfo',
+            array($productId, $file, $storeView, $identifierType)
+        );
     }
 
     /**
@@ -78,21 +84,27 @@ class ProductMedia extends MagentoModuleAbstract
      */
     public function getList($productId, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeMediaList($productId, $storeView, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductAttributeMediaList',
+            array($productId, $storeView, $identifierType)
+        );
     }
 
     /**
      * Allows you to remove the image from a product.
      *
-     * @param string  $productId
+     * @param string $productId
      * @param  string $file
-     * @param string  $identifierType
+     * @param string $identifierType
      *
      * @return mixed
      */
     public function remove($productId, $file, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeMediaRemove($productId, $file, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductAttributeMediaRemove',
+            array($productId, $file, $identifierType)
+        );
     }
 
     /**
@@ -106,7 +118,7 @@ class ProductMedia extends MagentoModuleAbstract
      */
     public function getTypes($setId)
     {
-        return $this->remoteAdapter->catalogProductAttributeMediaTypes($setId);
+        return $this->remoteAdapter->call('catalogProductAttributeMediaTypes', array($setId));
     }
 
     /**

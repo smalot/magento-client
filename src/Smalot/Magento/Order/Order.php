@@ -37,7 +37,7 @@ class Order extends MagentoModuleAbstract
      */
     public function addComment($orderIncrementId, $status, $comment = null, $notify = null)
     {
-        return $this->remoteAdapter->salesOrderAddComment($orderIncrementId, $status, $comment, $notify);
+        return $this->remoteAdapter->call('salesOrderAddComment', array($orderIncrementId, $status, $comment, $notify));
     }
 
     /**
@@ -49,7 +49,7 @@ class Order extends MagentoModuleAbstract
      */
     public function cancel($orderIncrementId)
     {
-        return $this->remoteAdapter->salesOrderCancel($orderIncrementId);
+        return $this->remoteAdapter->call('salesOrderCancel', array($orderIncrementId));
     }
 
     /**
@@ -61,7 +61,7 @@ class Order extends MagentoModuleAbstract
      */
     public function hold($orderIncrementId)
     {
-        return $this->remoteAdapter->salesOrderHold($orderIncrementId);
+        return $this->remoteAdapter->call('salesOrderHold', array($orderIncrementId));
     }
 
     /**
@@ -73,7 +73,7 @@ class Order extends MagentoModuleAbstract
      */
     public function getInfo($orderIncrementId)
     {
-        return $this->remoteAdapter->salesOrderInfo($orderIncrementId);
+        return $this->remoteAdapter->call('salesOrderInfo', array($orderIncrementId));
     }
 
     /**
@@ -85,7 +85,7 @@ class Order extends MagentoModuleAbstract
      */
     public function getList($filters)
     {
-        return $this->remoteAdapter->salesOrderList($filters);
+        return $this->remoteAdapter->call('salesOrderList', array($filters));
     }
 
     /**
@@ -97,6 +97,6 @@ class Order extends MagentoModuleAbstract
      */
     public function unhold($orderIncrementId)
     {
-        return $this->remoteAdapter->salesOrderUnhold($orderIncrementId);
+        return $this->remoteAdapter->call('salesOrderUnhold', array($orderIncrementId));
     }
 }

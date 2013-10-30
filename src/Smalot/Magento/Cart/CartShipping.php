@@ -28,27 +28,27 @@ class CartShipping extends MagentoModuleAbstract
     /**
      * Allows you to retrieve the list of available shipping methods for a shopping cart (quote).
      *
-     * @param int $quoteId
+     * @param int    $quoteId
      * @param string $store
      *
      * @return mixed
      */
     public function getList($quoteId, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartShippingList($quoteId, $store);
+        return $this->remoteAdapter->call('shoppingCartShippingList', array($quoteId, $store));
     }
 
     /**
      * Allows you to set a shipping method for a shopping cart (quote).
      *
-     * @param int     $quoteId
-     * @param string     $shippingMethod
+     * @param int    $quoteId
+     * @param string $shippingMethod
      * @param string $store
      *
      * @return mixed
      */
     public function getMethod($quoteId, $shippingMethod, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartShippingMethod($quoteId, $shippingMethod, $store);
+        return $this->remoteAdapter->call('shoppingCartShippingMethod', array($quoteId, $shippingMethod, $store));
     }
 }

@@ -34,7 +34,7 @@ class ProductTag extends MagentoModuleAbstract
      */
     public function add($data)
     {
-        return $this->remoteAdapter->catalogProductTagAdd($data);
+        return $this->remoteAdapter->call('catalogProductTagAdd', array($data));
     }
 
     /**
@@ -47,7 +47,7 @@ class ProductTag extends MagentoModuleAbstract
      */
     public function getInfo($tagId, $store = null)
     {
-        return $this->remoteAdapter->catalogProductTagInfo($tagId, $store);
+        return $this->remoteAdapter->call('catalogProductTagInfo', array($tagId, $store));
     }
 
     /**
@@ -60,7 +60,7 @@ class ProductTag extends MagentoModuleAbstract
      */
     public function getList($productId, $store = null)
     {
-        return $this->remoteAdapter->catalogProductTagList($productId, $store);
+        return $this->remoteAdapter->call('catalogProductTagList', array($productId, $store));
     }
 
     /**
@@ -72,7 +72,7 @@ class ProductTag extends MagentoModuleAbstract
      */
     public function remove($tagId)
     {
-        return $this->remoteAdapter->catalogProductTagRemove($tagId);
+        return $this->remoteAdapter->call('catalogProductTagRemove', array($tagId));
     }
 
     /**
@@ -86,6 +86,6 @@ class ProductTag extends MagentoModuleAbstract
      */
     public function update($tagId, $data, $store = null)
     {
-        return $this->remoteAdapter->catalogProductTagUpdate($tagId, $data, $store);
+        return $this->remoteAdapter->call('catalogProductTagUpdate', array($tagId, $data, $store));
     }
 }

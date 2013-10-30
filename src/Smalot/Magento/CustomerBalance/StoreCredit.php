@@ -35,7 +35,7 @@ class StoreCredit extends MagentoModuleAbstract
      */
     public function getBalance($customerId, $websiteId)
     {
-        return $this->remoteAdapter->enterpriseCustomerbalanceBalance($customerId, $websiteId);
+        return $this->remoteAdapter->call('enterpriseCustomerbalanceBalance', array($customerId, $websiteId));
     }
 
     /**
@@ -48,6 +48,6 @@ class StoreCredit extends MagentoModuleAbstract
      */
     public function getHistory($customerId, $websiteId = null)
     {
-        return $this->remoteAdapter->enterpriseCustomerbalanceHistory($customerId, $websiteId);
+        return $this->remoteAdapter->call('enterpriseCustomerbalanceHistory', array($customerId, $websiteId));
     }
 }

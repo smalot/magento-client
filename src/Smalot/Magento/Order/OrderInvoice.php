@@ -57,7 +57,7 @@ class OrderInvoice extends MagentoModuleAbstract
      */
     public function cancel($invoiceIncrementId)
     {
-        return $this->remoteAdapter->salesOrderInvoiceCancel($invoiceIncrementId);
+        return $this->remoteAdapter->call('salesOrderInvoiceCancel', array($invoiceIncrementId));
     }
 
     /**
@@ -71,7 +71,7 @@ class OrderInvoice extends MagentoModuleAbstract
      */
     public function capture($invoiceIncrementId)
     {
-        return $this->remoteAdapter->salesOrderInvoiceCapture($invoiceIncrementId);
+        return $this->remoteAdapter->call('salesOrderInvoiceCapture', array($invoiceIncrementId));
     }
 
     /**

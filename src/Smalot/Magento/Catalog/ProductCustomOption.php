@@ -36,7 +36,7 @@ class ProductCustomOption extends MagentoModuleAbstract
      */
     public function add($productId, $data, $store = null)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionAdd($productId, $data, $store);
+        return $this->remoteAdapter->call('catalogProductCustomOptionAdd', array($productId, $data, $store));
     }
 
     /**
@@ -49,7 +49,7 @@ class ProductCustomOption extends MagentoModuleAbstract
      */
     public function getInfo($optionId, $store = null)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionInfo($optionId, $store);
+        return $this->remoteAdapter->call('catalogProductCustomOptionInfo', array($optionId, $store));
     }
 
     /**
@@ -62,7 +62,7 @@ class ProductCustomOption extends MagentoModuleAbstract
      */
     public function getList($productId, $store = null)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionList($productId, $store);
+        return $this->remoteAdapter->call('catalogProductCustomOptionList', array($productId, $store));
     }
 
     /**
@@ -74,7 +74,7 @@ class ProductCustomOption extends MagentoModuleAbstract
      */
     public function remove($optionId)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionRemove($optionId);
+        return $this->remoteAdapter->call('catalogProductCustomOptionRemove', array($optionId));
 
     }
 
@@ -85,7 +85,7 @@ class ProductCustomOption extends MagentoModuleAbstract
      */
     public function getTypes()
     {
-        return $this->remoteAdapter->catalogProductCustomOptionTypes();
+        return $this->remoteAdapter->call('catalogProductCustomOptionTypes', array());
     }
 
     /**
@@ -99,6 +99,6 @@ class ProductCustomOption extends MagentoModuleAbstract
      */
     public function update($optionId, $data, $store = null)
     {
-        return $this->remoteAdapter->catalogProductCustomOptionUpdate($optionId, $data, $store);
+        return $this->remoteAdapter->call('catalogProductCustomOptionUpdate', array($optionId, $data, $store));
     }
 }

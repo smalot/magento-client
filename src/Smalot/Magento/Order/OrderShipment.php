@@ -57,7 +57,10 @@ class OrderShipment extends MagentoModuleAbstract
      */
     public function addTrack($shipmentIncrementId, $carrier, $title, $trackNumber)
     {
-        return $this->remoteAdapter->salesOrderShipmentAddTrack($shipmentIncrementId, $carrier, $title, $trackNumber);
+        return $this->remoteAdapter->call(
+            'salesOrderShipmentAddTrack',
+            array($shipmentIncrementId, $carrier, $title, $trackNumber)
+        );
     }
 
     /**
@@ -91,7 +94,7 @@ class OrderShipment extends MagentoModuleAbstract
      */
     public function getCarriers($orderIncrementId)
     {
-        return $this->remoteAdapter->salesOrderShipmentGetCarriers($orderIncrementId);
+        return $this->remoteAdapter->call('salesOrderShipmentGetCarriers', array($orderIncrementId));
     }
 
     /**
@@ -103,7 +106,7 @@ class OrderShipment extends MagentoModuleAbstract
      */
     public function getInfo($shipmentIncrementId)
     {
-        return $this->remoteAdapter->salesOrderShipmentInfo($shipmentIncrementId);
+        return $this->remoteAdapter->call('salesOrderShipmentInfo', array($shipmentIncrementId));
     }
 
     /**
@@ -116,7 +119,7 @@ class OrderShipment extends MagentoModuleAbstract
      */
     public function getList($filters)
     {
-        return $this->remoteAdapter->salesOrderShipmentList($filters);
+        return $this->remoteAdapter->call('salesOrderShipmentList', array($filters));
     }
 
     /**
@@ -129,6 +132,6 @@ class OrderShipment extends MagentoModuleAbstract
      */
     public function removeTrack($shipmentIncrementId, $trackId)
     {
-        return $this->remoteAdapter->salesOrderShipmentRemoveTrack($shipmentIncrementId, $trackId);
+        return $this->remoteAdapter->call('salesOrderShipmentRemoveTrack', array($shipmentIncrementId, $trackId));
     }
 }

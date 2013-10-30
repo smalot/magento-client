@@ -23,5 +23,5 @@ namespace Smalot\Magento;
  */
 interface RemoteAdapterInterface
 {
-
+    public function call($method, $params, $throwsException = true);
 }

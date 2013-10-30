@@ -36,7 +36,7 @@ class GiftMessage extends MagentoModuleAbstract
      */
     public function setForQuote($quoteId, $giftMessage, $store)
     {
-        return $this->remoteAdapter->giftMessageSetForQuote($quoteId, $giftMessage, $store);
+        return $this->remoteAdapter->call('giftMessageSetForQuote', array($quoteId, $giftMessage, $store));
     }
 
     /**
@@ -50,7 +50,7 @@ class GiftMessage extends MagentoModuleAbstract
      */
     public function setForQuoteItem($quoteItemId, $giftMessage, $store)
     {
-        return $this->remoteAdapter->giftMessageSetForQuoteItem($quoteItemId, $giftMessage, $store);
+        return $this->remoteAdapter->call('giftMessageSetForQuoteItem', array($quoteItemId, $giftMessage, $store));
     }
 
     /**
@@ -64,6 +64,9 @@ class GiftMessage extends MagentoModuleAbstract
      */
     public function setForQuoteProduct($quoteId, $productsAndMessages, $store)
     {
-        return $this->remoteAdapter->giftMessageSetForQuoteProduct($quoteId, $productsAndMessages, $store);
+        return $this->remoteAdapter->call(
+            'giftMessageSetForQuoteProduct',
+            array($quoteId, $productsAndMessages, $store)
+        );
     }
 }

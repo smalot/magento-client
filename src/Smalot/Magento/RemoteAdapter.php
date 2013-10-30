@@ -153,11 +153,6 @@ class RemoteAdapter implements RemoteAdapterInterface
      */
     public function ping()
     {
-        // Force login.
-        if (is_null($this->sessionId) && $this->autoLogin) {
-            $this->login();
-        }
-
         $info = $this->call('magentoInfo', array(), false);
 
         return (is_object($info) || is_array($info));
@@ -186,9 +181,13 @@ class RemoteAdapter implements RemoteAdapterInterface
      * @return mixed
      * @throws \Exception
      */
-    public function call($method, $params = array(), $throwsException = false)
+    public function call($method, $params = array(), $throwsException = true)
     {
         try {
+            if (is_null($this->sessionId) && $this->autoLogin) {
+                $this->login();
+            }
+
             if (is_null($this->sessionId)) {
                 throw new \Exception('Not connected.');
             }
@@ -209,24 +208,9 @@ class RemoteAdapter implements RemoteAdapterInterface
     }
 
     /**
-     * @param string $method
-     * @param array  $params
-     *
-     * @return mixed
-     */
-    public function __call($method, $params = array())
-    {
-        if (is_null($this->sessionId) && $this->autoLogin) {
-            $this->login();
-        }
-
-        return $this->call($method, $params, true);
-    }
-
-    /**
      * @return string
      */
-    public function __getLastRequestHeaders()
+    public function getLastRequestHeaders()
     {
         return $this->soapClient->__getLastRequestHeaders();
     }
@@ -234,7 +218,7 @@ class RemoteAdapter implements RemoteAdapterInterface
     /**
      * @return string
      */
-    public function __getLastRequest()
+    public function getLastRequest()
     {
         return $this->soapClient->__getLastRequest();
     }
@@ -242,7 +226,7 @@ class RemoteAdapter implements RemoteAdapterInterface
     /**
      * @return string
      */
-    public function __getLastResponseHeaders()
+    public function getLastResponseHeaders()
     {
         return $this->soapClient->__getLastResponseHeaders();
     }
@@ -250,7 +234,7 @@ class RemoteAdapter implements RemoteAdapterInterface
     /**
      * @return string
      */
-    public function __getLastResponse()
+    public function getLastResponse()
     {
         return $this->soapClient->__getLastResponse();
     }

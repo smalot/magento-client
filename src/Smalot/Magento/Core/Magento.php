@@ -32,6 +32,6 @@ class Magento extends MagentoModuleAbstract
      */
     public function getInfo()
     {
-        return $this->remoteAdapter->magentoInfo();
+        return $this->remoteAdapter->call('magentoInfo', array());
     }
 }

@@ -62,7 +62,10 @@ class ProductDownloadableLink extends MagentoModuleAbstract
      */
     public function getList($productId, $store = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductDownloadableLinkList($productId, $store, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductDownloadableLinkList',
+            array($productId, $store, $identifierType)
+        );
     }
 
     /**
@@ -75,6 +78,6 @@ class ProductDownloadableLink extends MagentoModuleAbstract
      */
     public function remove($linkId, $resourceType)
     {
-        return $this->remoteAdapter->catalogProductDownloadableLinkRemove($linkId, $resourceType);
+        return $this->remoteAdapter->call('catalogProductDownloadableLinkRemove', array($linkId, $resourceType));
     }
 }

@@ -34,7 +34,7 @@ class Cart extends MagentoModuleAbstract
      */
     public function create($storeId = null)
     {
-        return $this->remoteAdapter->shoppingCartCreate($storeId);
+        return $this->remoteAdapter->call('shoppingCartCreate', array($storeId));
     }
 
     /**
@@ -47,7 +47,7 @@ class Cart extends MagentoModuleAbstract
      */
     public function getInfo($quoteId, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartInfo($quoteId, $store);
+        return $this->remoteAdapter->call('shoppingCartInfo', array($quoteId, $store));
     }
 
     /**
@@ -60,7 +60,7 @@ class Cart extends MagentoModuleAbstract
      */
     public function getLicense($quoteId, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartLicense($quoteId, $store);
+        return $this->remoteAdapter->call('shoppingCartLicense', array($quoteId, $store));
     }
 
     /**
@@ -75,7 +75,7 @@ class Cart extends MagentoModuleAbstract
      */
     public function order($quoteId, $store = null, $agreements = null)
     {
-        return $this->remoteAdapter->shoppingCartOrder($quoteId, $store, $agreements);
+        return $this->remoteAdapter->call('shoppingCartOrder', array($quoteId, $store, $agreements));
     }
 
     /**
@@ -88,6 +88,6 @@ class Cart extends MagentoModuleAbstract
      */
     public function getTotals($quoteId, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartTotals($quoteId, $store);
+        return $this->remoteAdapter->call('shoppingCartTotals', array($quoteId, $store));
     }
 }

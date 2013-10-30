@@ -34,7 +34,7 @@ class Customer extends MagentoModuleAbstract
      */
     public function create($customerData)
     {
-        return $this->remoteAdapter->customerCustomerCreate($customerData);
+        return $this->remoteAdapter->call('customerCustomerCreate', array($customerData));
     }
 
     /**
@@ -46,7 +46,7 @@ class Customer extends MagentoModuleAbstract
      */
     public function delete($customerId)
     {
-        return $this->remoteAdapter->customerCustomerDelete($customerId);
+        return $this->remoteAdapter->call('customerCustomerDelete', array($customerId));
     }
 
     /**
@@ -59,7 +59,7 @@ class Customer extends MagentoModuleAbstract
      */
     public function getInfo($customerId, $attributes)
     {
-        return $this->remoteAdapter->customerCustomerInfo($customerId, $attributes);
+        return $this->remoteAdapter->call('customerCustomerInfo', array($customerId, $attributes));
     }
 
     /**
@@ -71,7 +71,7 @@ class Customer extends MagentoModuleAbstract
      */
     public function getList($filters)
     {
-        return $this->remoteAdapter->customerCustomerList($filters);
+        return $this->remoteAdapter->call('customerCustomerList', array($filters));
     }
 
     /**
@@ -85,6 +85,6 @@ class Customer extends MagentoModuleAbstract
      */
     public function update($customerId, $customerData)
     {
-        return $this->remoteAdapter->customerCustomerUpdate($customerId, $customerData);
+        return $this->remoteAdapter->call('customerCustomerUpdate', array($customerId, $customerData));
     }
 }

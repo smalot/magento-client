@@ -35,7 +35,7 @@ class CartPayment extends MagentoModuleAbstract
      */
     public function getList($quoteId, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartPaymentList($quoteId, $store);
+        return $this->remoteAdapter->call('shoppingCartPaymentList', array($quoteId, $store));
     }
 
     /**
@@ -49,6 +49,6 @@ class CartPayment extends MagentoModuleAbstract
      */
     public function getMethod($quoteId, $paymentData, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartPaymentMethod($quoteId, $paymentData, $store);
+        return $this->remoteAdapter->call('shoppingCartPaymentMethod', array($quoteId, $paymentData, $store));
     }
 }

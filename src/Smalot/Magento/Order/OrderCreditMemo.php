@@ -55,7 +55,7 @@ class OrderCreditMemo extends MagentoModuleAbstract
      */
     public function cancel($creditmemoIncrementId)
     {
-        return $this->remoteAdapter->salesOrderCreditmemoCancel($creditmemoIncrementId);
+        return $this->remoteAdapter->call('salesOrderCreditmemoCancel', array($creditmemoIncrementId));
     }
 
     /**
@@ -98,7 +98,7 @@ class OrderCreditMemo extends MagentoModuleAbstract
      */
     public function getInfo($creditmemoIncrementId)
     {
-        return $this->remoteAdapter->salesOrderCreditmemoInfo($creditmemoIncrementId);
+        return $this->remoteAdapter->call('salesOrderCreditmemoInfo', array($creditmemoIncrementId));
     }
 
     /**
@@ -110,6 +110,6 @@ class OrderCreditMemo extends MagentoModuleAbstract
      */
     public function getList($filters)
     {
-        return $this->remoteAdapter->salesOrderCreditmemoList($filters);
+        return $this->remoteAdapter->call('salesOrderCreditmemoList', array($filters));
     }
 }

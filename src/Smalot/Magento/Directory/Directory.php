@@ -32,7 +32,7 @@ class Directory extends MagentoModuleAbstract
      */
     public function getCountryList()
     {
-        return $this->remoteAdapter->directoryCountryList();
+        return $this->remoteAdapter->call('directoryCountryList', array());
     }
 
     /**
@@ -44,6 +44,6 @@ class Directory extends MagentoModuleAbstract
      */
     public function getRegionList($country)
     {
-        return $this->remoteAdapter->directoryRegionList($country);
+        return $this->remoteAdapter->call('directoryRegionList', array($country));
     }
 }

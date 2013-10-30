@@ -35,7 +35,7 @@ class ProductTierPrice extends MagentoModuleAbstract
      */
     public function getInfo($productId, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeTierPriceInfo($productId, $identifierType);
+        return $this->remoteAdapter->call('catalogProductAttributeTierPriceInfo', array($productId, $identifierType));
     }
 
     /**
@@ -49,6 +49,9 @@ class ProductTierPrice extends MagentoModuleAbstract
      */
     public function update($productId, $tierPrices, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeTierPriceUpdate($productId, $tierPrices, $identifierType);
+        return $this->remoteAdapter->call(
+            'catalogProductAttributeTierPriceUpdate',
+            array($productId, $tierPrices, $identifierType)
+        );
     }
 }

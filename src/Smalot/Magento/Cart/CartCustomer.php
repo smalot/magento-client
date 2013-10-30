@@ -36,7 +36,10 @@ class CartCustomer extends MagentoModuleAbstract
      */
     public function setAddresses($quoteId, $customerAddressData, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartCustomerAddresses($quoteId, $customerAddressData, $store);
+        return $this->remoteAdapter->call(
+            'shoppingCartCustomerAddresses',
+            array($quoteId, $customerAddressData, $store)
+        );
     }
 
     /**
@@ -50,6 +53,6 @@ class CartCustomer extends MagentoModuleAbstract
      */
     public function setCustomer($quoteId, $customerData, $store = null)
     {
-        return $this->remoteAdapter->shoppingCartCustomerSet($quoteId, $customerData, $store);
+        return $this->remoteAdapter->call('shoppingCartCustomerSet', array($quoteId, $customerData, $store));
     }
 }
