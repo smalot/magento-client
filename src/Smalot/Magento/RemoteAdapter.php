@@ -153,7 +153,7 @@ class RemoteAdapter implements RemoteAdapterInterface
      */
     public function ping()
     {
-        $info = $this->call('core_magento.info', array(), true);
+        $info = $this->call(new Action('core_magento.info', array()), false);
 
         return (is_object($info) || is_array($info));
     }

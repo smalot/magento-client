@@ -30,7 +30,7 @@ interface RemoteAdapterInterface
      * @return array
      * @throws \Exception
      */
-    public function call(ActionInterface $action, $throwsException = false);
+    public function call(ActionInterface $action, $throwsException = true);
 
     /**
      * @param MultiCallQueueInterface $queue
