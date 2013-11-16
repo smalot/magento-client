@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\GiftMessage;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -32,11 +33,11 @@ class GiftMessage extends MagentoModuleAbstract
      * @param array  $giftMessage
      * @param string $store
      *
-     * @return array
+     * @return ActionInterface
      */
     public function setForQuote($quoteId, $giftMessage, $store)
     {
-        return $this->remoteAdapter->call('giftMessageSetForQuote', array($quoteId, $giftMessage, $store));
+        return $this->__createAction('giftmessage.setForQuote', func_get_args());
     }
 
     /**
@@ -46,11 +47,11 @@ class GiftMessage extends MagentoModuleAbstract
      * @param array  $giftMessage
      * @param string $store
      *
-     * @return array
+     * @return ActionInterface
      */
     public function setForQuoteItem($quoteItemId, $giftMessage, $store)
     {
-        return $this->remoteAdapter->call('giftMessageSetForQuoteItem', array($quoteItemId, $giftMessage, $store));
+        return $this->__createAction('giftmessage.setForQuoteItem', func_get_args());
     }
 
     /**
@@ -60,13 +61,10 @@ class GiftMessage extends MagentoModuleAbstract
      * @param array  $productsAndMessages
      * @param string $store
      *
-     * @return array
+     * @return ActionInterface
      */
     public function setForQuoteProduct($quoteId, $productsAndMessages, $store)
     {
-        return $this->remoteAdapter->call(
-            'giftMessageSetForQuoteProduct',
-            array($quoteId, $productsAndMessages, $store)
-        );
+        return $this->__createAction('giftmessage.setForQuoteProduct', func_get_args());
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -33,11 +34,11 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      * @param array  $data
      * @param string $store
      *
-     * @return bool
+     * @return ActionInterface
      */
     public function add($optionId, $data, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionValueAdd', array($optionId, $data, $store));
+        return $this->__createAction('product_custom_option_value.add', func_get_args());
     }
 
     /**
@@ -46,11 +47,11 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      * @param string $valueId
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($valueId, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionValueInfo', array($valueId, $store));
+        return $this->__createAction('product_custom_option_value.info', func_get_args());
     }
 
     /**
@@ -60,11 +61,11 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      * @param string $optionId
      * @param string $store
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getList($optionId, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionValueList', array($optionId, $store));
+        return $this->__createAction('product_custom_option_value.list', func_get_args());
     }
 
     /**
@@ -72,11 +73,11 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      *
      * @param string $valueId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function remove($valueId)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionValueRemove', array($valueId));
+        return $this->__createAction('product_custom_option_value.remove', func_get_args());
     }
 
     /**
@@ -86,10 +87,10 @@ class ProductCustomOptionValue extends MagentoModuleAbstract
      * @param array  $data
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($valueId, $data, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionValueUpdate', array($valueId, $data, $store));
+        return $this->__createAction('product_custom_option_value.update', func_get_args());
     }
 }

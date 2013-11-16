@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\CustomerBalance;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -31,11 +32,11 @@ class StoreCreditQuote extends MagentoModuleAbstract
      * @param string $quoteId
      * @param string $store
      *
-     * @return bool
+     * @return ActionInterface
      */
     public function removeAmount($quoteId, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartCustomerbalanceRemoveAmount', array($quoteId, $store));
+        return $this->__createAction('storecredit_quote.removeAmount', func_get_args());
     }
 
     /**
@@ -44,10 +45,10 @@ class StoreCreditQuote extends MagentoModuleAbstract
      * @param string $quoteId
      * @param string $store
      *
-     * @return float
+     * @return ActionInterface
      */
     public function setAmount($quoteId, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartCustomerbalanceSetAmount', array($quoteId, $store));
+        return $this->__createAction('storecredit_quote.setAmount', func_get_args());
     }
 }

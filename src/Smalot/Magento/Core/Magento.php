@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Core;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -28,10 +29,10 @@ class Magento extends MagentoModuleAbstract
     /**
      * Allows you to retrieve information about Magento version and edition.
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo()
     {
-        return $this->remoteAdapter->call('magentoInfo', array());
+        return $this->__createAction('core_magento.info', func_get_args());
     }
 }

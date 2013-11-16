@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -33,16 +34,11 @@ class ProductAttributeSet extends MagentoModuleAbstract
      * @param string $attributeGroupId
      * @param string $sortOrder
      *
-     * @return mixed
+     * @return ActionInterface
      */
-    public function attributeSet($attributeId, $attributeSetId, $attributeGroupId = null, $sortOrder = null)
+    public function attributeAdd($attributeId, $attributeSetId, $attributeGroupId = null, $sortOrder = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeSetAttributeAdd(
-            $attributeId,
-            $attributeSetId,
-            $attributeGroupId,
-            $sortOrder
-        );
+        return $this->create('product_attribute_set.attributeAdd', func_get_args());
     }
 
     /**
@@ -51,14 +47,11 @@ class ProductAttributeSet extends MagentoModuleAbstract
      * @param string $attributeId
      * @param string $attributeSetId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function attributeRemove($attributeId, $attributeSetId)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductAttributeSetAttributeRemove',
-            array($attributeId, $attributeSetId)
-        );
+        return $this->__createAction('product_attribute_set.attributeRemove', func_get_args());
     }
 
     /**
@@ -67,11 +60,11 @@ class ProductAttributeSet extends MagentoModuleAbstract
      * @param string $attributeSetName
      * @param string $skeletonSetId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($attributeSetName, $skeletonSetId)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeSetCreate', array($attributeSetName, $skeletonSetId));
+        return $this->__createAction('product_attribute_set.create', func_get_args());
     }
 
     /**
@@ -80,11 +73,11 @@ class ProductAttributeSet extends MagentoModuleAbstract
      * @param string $attributeSetId
      * @param string $groupName
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function groupAdd($attributeSetId, $groupName)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeSetGroupAdd', array($attributeSetId, $groupName));
+        return $this->__createAction('product_attribute_set.groupAdd', func_get_args());
     }
 
     /**
@@ -92,11 +85,11 @@ class ProductAttributeSet extends MagentoModuleAbstract
      *
      * @param string $attributeGroupId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function groupRemove($attributeGroupId)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeSetGroupRemove', array($attributeGroupId));
+        return $this->__createAction('product_attribute_set.groupRemove', func_get_args());
     }
 
     /**
@@ -105,21 +98,21 @@ class ProductAttributeSet extends MagentoModuleAbstract
      * @param string $groupId
      * @param string $groupName
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function groupRename($groupId, $groupName)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeSetGroupRename', array($groupId, $groupName));
+        return $this->__createAction('product_attribute_set.groupRename', func_get_args());
     }
 
     /**
      * Allows you to retrieve the list of product attribute sets.
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList()
     {
-        return $this->remoteAdapter->call('catalogProductAttributeSetList', array());
+        return $this->__createAction('product_attribute_set.list', func_get_args());
     }
 
     /**
@@ -128,13 +121,10 @@ class ProductAttributeSet extends MagentoModuleAbstract
      * @param string $attributeSetId
      * @param string $forceProductsRemove
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function remove($attributeSetId, $forceProductsRemove)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductAttributeSetRemove',
-            array($attributeSetId, $forceProductsRemove)
-        );
+        return $this->__createAction('product_attribute_set.remove', func_get_args());
     }
 }

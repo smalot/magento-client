@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -32,11 +33,11 @@ class ProductCustomOption extends MagentoModuleAbstract
      * @param array  $data
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function add($productId, $data, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionAdd', array($productId, $data, $store));
+        return $this->__createAction('product_custom_option.add', func_get_args());
     }
 
     /**
@@ -45,11 +46,11 @@ class ProductCustomOption extends MagentoModuleAbstract
      * @param string $optionId
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($optionId, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionInfo', array($optionId, $store));
+        return $this->__createAction('product_custom_option.info', func_get_args());
     }
 
     /**
@@ -58,11 +59,11 @@ class ProductCustomOption extends MagentoModuleAbstract
      * @param string $productId
      * @param string $store
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getList($productId, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionList', array($productId, $store));
+        return $this->__createAction('product_custom_option.list', func_get_args());
     }
 
     /**
@@ -70,22 +71,22 @@ class ProductCustomOption extends MagentoModuleAbstract
      *
      * @param string $optionId
      *
-     * @return boolean
+     * @return ActionInterface
      */
     public function remove($optionId)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionRemove', array($optionId));
+        return $this->__createAction('product_custom_option.remove', func_get_args());
 
     }
 
     /**
      * Allows you to retrieve the list of available custom option types.
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getTypes()
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionTypes', array());
+        return $this->__createAction('product_custom_option.types', func_get_args());
     }
 
     /**
@@ -95,10 +96,10 @@ class ProductCustomOption extends MagentoModuleAbstract
      * @param array  $data
      * @param string $store
      *
-     * @return int
+     * @return ActionInterface
      */
     public function update($optionId, $data, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductCustomOptionUpdate', array($optionId, $data, $store));
+        return $this->__createAction('product_custom_option.update', func_get_args());
     }
 }

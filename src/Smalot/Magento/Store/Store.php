@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Store;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -28,11 +29,11 @@ class Store extends MagentoModuleAbstract
     /**
      * Allows you to retrieve the list of store views.
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getList()
     {
-        return $this->remoteAdapter->call('storeList', array());
+        return $this->__createAction('store.list', func_get_args());
     }
 
     /**
@@ -40,10 +41,10 @@ class Store extends MagentoModuleAbstract
      *
      * @param string $storeId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($storeId = null)
     {
-        return $this->remoteAdapter->call('storeInfo', array($storeId));
+        return $this->__createAction('store.info', func_get_args());
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Order;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -33,11 +34,11 @@ class Order extends MagentoModuleAbstract
      * @param string $comment
      * @param string $notify
      *
-     * @return bool
+     * @return ActionInterface
      */
     public function addComment($orderIncrementId, $status, $comment = null, $notify = null)
     {
-        return $this->remoteAdapter->call('salesOrderAddComment', array($orderIncrementId, $status, $comment, $notify));
+        return $this->__createAction('order.addComment', func_get_args());
     }
 
     /**
@@ -45,11 +46,11 @@ class Order extends MagentoModuleAbstract
      *
      * @param string $orderIncrementId
      *
-     * @return bool
+     * @return ActionInterface
      */
     public function cancel($orderIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderCancel', array($orderIncrementId));
+        return $this->__createAction('order.cancel', func_get_args());
     }
 
     /**
@@ -57,11 +58,11 @@ class Order extends MagentoModuleAbstract
      *
      * @param string $orderIncrementId
      *
-     * @return bool
+     * @return ActionInterface
      */
     public function hold($orderIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderHold', array($orderIncrementId));
+        return $this->__createAction('order.hold', func_get_args());
     }
 
     /**
@@ -69,11 +70,11 @@ class Order extends MagentoModuleAbstract
      *
      * @param string $orderIncrementId
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getInfo($orderIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderInfo', array($orderIncrementId));
+        return $this->__createAction('order.info', func_get_args());
     }
 
     /**
@@ -81,11 +82,11 @@ class Order extends MagentoModuleAbstract
      *
      * @param array $filters
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getList($filters)
     {
-        return $this->remoteAdapter->call('salesOrderList', array($filters));
+        return $this->__createAction('order.list', func_get_args());
     }
 
     /**
@@ -93,10 +94,10 @@ class Order extends MagentoModuleAbstract
      *
      * @param string $orderIncrementId
      *
-     * @return bool
+     * @return ActionInterface
      */
     public function unhold($orderIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderUnhold', array($orderIncrementId));
+        return $this->__createAction('order.unhold', func_get_args());
     }
 }

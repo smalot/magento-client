@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -34,11 +35,11 @@ class Product extends MagentoModuleAbstract
      * @param array  $productData
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($type, $set, $sku, $productData, $storeView = null)
     {
-        return $this->remoteAdapter->call('catalogProductCreate', array($type, $set, $sku, $productData, $storeView));
+        return $this->__createAction('catalog_product.create', func_get_args());
     }
 
     /**
@@ -46,11 +47,11 @@ class Product extends MagentoModuleAbstract
      *
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->call('catalogProductCurrentStore', array($storeView));
+        return $this->__createAction('catalog_product.currentStore', func_get_args());
     }
 
 
@@ -60,11 +61,11 @@ class Product extends MagentoModuleAbstract
      * @param string $productId
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function delete($productId, $identifierType = null)
     {
-        return $this->remoteAdapter->call('catalogProductDelete', array($productId, $identifierType));
+        return $this->__createAction('catalog_product.delete', func_get_args());
     }
 
     /**
@@ -74,14 +75,11 @@ class Product extends MagentoModuleAbstract
      * @param string $storeView
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getSpecialPrice($productId, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductGetSpecialPrice',
-            array($productId, $storeView, $identifierType)
-        );
+        return $this->__createAction('catalog_product.getSpecialPrice', func_get_args());
     }
 
     /**
@@ -92,14 +90,11 @@ class Product extends MagentoModuleAbstract
      * @param string $attributes
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($productId, $storeView = null, $attributes = null, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductInfo',
-            array($productId, $storeView, $attributes, $identifierType)
-        );
+        return $this->__createAction('catalog_product.info', func_get_args());
     }
 
     /**
@@ -108,11 +103,11 @@ class Product extends MagentoModuleAbstract
      * @param array $filters
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($filters, $storeView = null)
     {
-        return $this->remoteAdapter->call('catalogProductList', array($filters, $storeView));
+        return $this->__createAction('catalog_product.list', func_get_args());
     }
 
     /**
@@ -122,14 +117,11 @@ class Product extends MagentoModuleAbstract
      * @param string $productType
      * @param string $attributeSetId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getListOfAdditionalAttributes($productType, $attributeSetId)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductListOfAdditionalAttributes',
-            array($productType, $attributeSetId)
-        );
+        return $this->__createAction('catalog_product.listOfAdditionalAttributes', func_get_args());
     }
 
     /**
@@ -142,7 +134,7 @@ class Product extends MagentoModuleAbstract
      * @param string $storeView
      * @param string $productIdentifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function setSpecialPrice(
         $productId,
@@ -152,14 +144,7 @@ class Product extends MagentoModuleAbstract
         $storeView = null,
         $productIdentifierType = null
     ) {
-        return $this->remoteAdapter->catalogProductSetSpecialPrice(
-            $productId,
-            $specialPrice,
-            $fromDate,
-            $toDate,
-            $storeView,
-            $productIdentifierType
-        );
+        return $this->__createAction('catalog_product.setSpecialPrice', func_get_args());
     }
 
     /**
@@ -171,13 +156,10 @@ class Product extends MagentoModuleAbstract
      * @param string $storeView
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($productId, $productData, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductUpdate',
-            array($productId, $productData, $storeView, $identifierType)
-        );
+        return $this->__createAction('catalog_product.update', func_get_args());
     }
 }

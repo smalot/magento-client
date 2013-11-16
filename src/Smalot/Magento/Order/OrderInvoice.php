@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Order;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -33,16 +34,11 @@ class OrderInvoice extends MagentoModuleAbstract
      * @param int    $email
      * @param int    $includeComment
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function addComment($invoiceIncrementId, $comment = null, $email = null, $includeComment = null)
     {
-        return $this->remoteAdapter->salesOrderInvoiceAddComment(
-            $invoiceIncrementId,
-            $comment,
-            $email,
-            $includeComment
-        );
+        return $this->__createAction('order_invoice.addComment', func_get_args());
     }
 
     /**
@@ -53,11 +49,11 @@ class OrderInvoice extends MagentoModuleAbstract
      *
      * @param string $invoiceIncrementId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function cancel($invoiceIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderInvoiceCancel', array($invoiceIncrementId));
+        return $this->__createAction('order_invoice.cancel', func_get_args());
     }
 
     /**
@@ -67,11 +63,11 @@ class OrderInvoice extends MagentoModuleAbstract
      *
      * @param string $invoiceIncrementId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function capture($invoiceIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderInvoiceCapture', array($invoiceIncrementId));
+        return $this->__createAction('order_invoice.capture', func_get_args());
     }
 
     /**
@@ -83,18 +79,30 @@ class OrderInvoice extends MagentoModuleAbstract
      * @param string $email
      * @param string $includeComment
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($orderIncrementId, $itemsQty, $comment, $email, $includeComment)
     {
-        return $this->remoteAdapter->salesOrderInvoiceCreate(
-            $orderIncrementId,
-            $itemsQty,
-            $comment,
-            $email,
-            $includeComment
-        );
+        return $this->__createAction('order_invoice.create', func_get_args());
     }
 
+    /**
+     * @param string $invoiceIncrementId
+     *
+     * @return ActionInterface
+     */
+    public function getInfo($invoiceIncrementId)
+    {
+        return $this->__createAction('order_invoice.info', func_get_args());
+    }
 
+    /**
+     * @param array $filters
+     *
+     * @return ActionInterface
+     */
+    public function getList($filters = null)
+    {
+        return $this->__createAction('order_invoice.list', func_get_args());
+    }
 }

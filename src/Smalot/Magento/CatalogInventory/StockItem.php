@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -30,11 +31,11 @@ class StockItem extends MagentoModuleAbstract
      *
      * @param array $productIds
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getList($productIds)
     {
-        return $this->remoteAdapter->call('catalogInventoryStockItemList', array($productIds));
+        return $this->__createAction('cataloginventory_stock_item.list', func_get_args());
     }
 
     /**
@@ -43,10 +44,10 @@ class StockItem extends MagentoModuleAbstract
      * @param string $productId
      * @param array  $data
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($productId, $data)
     {
-        return $this->remoteAdapter->call('catalogInventoryStockItemUpdate', array($productId, $data));
+        return $this->__createAction('cataloginventory_stock_item.update', func_get_args());
     }
 }

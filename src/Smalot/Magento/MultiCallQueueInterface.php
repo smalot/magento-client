@@ -14,25 +14,29 @@
  * file that was distributed with this source code.
  */
 
-namespace Smalot\Magento\Catalog;
-
-use Smalot\Magento\ActionInterface;
-use Smalot\Magento\MagentoModuleAbstract;
+namespace Smalot\Magento;
 
 /**
- * Class ProductType
+ * Interface MultiCallQueueInterface
  *
- * @package Smalot\Magento\Catalog
+ * @package Smalot\Magento
  */
-class ProductType extends MagentoModuleAbstract
+interface MultiCallQueueInterface extends \ArrayAccess, \Iterator, \Countable
 {
     /**
-     * Allows you to retrieve the list of product types.
+     * @param ActionInterface $action
      *
-     * @return ActionInterface
+     * @return mixed
      */
-    public function getList()
-    {
-        return $this->__createAction('catalog_product_type.list', func_get_args());
-    }
+    public function addAction(ActionInterface $action);
+
+    /**
+     * @return $this
+     */
+    public function flush();
+
+    /**
+     * @return array
+     */
+    public function execute();
 }

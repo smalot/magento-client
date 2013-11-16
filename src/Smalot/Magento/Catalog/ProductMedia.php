@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -33,14 +34,11 @@ class ProductMedia extends MagentoModuleAbstract
      * @param string $storeView
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($product, $data, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductAttributeMediaCreate',
-            array($product, $data, $storeView, $identifierType)
-        );
+        return $this->__createAction('catalog_product_attribute_media.create', func_get_args());
     }
 
     /**
@@ -48,11 +46,11 @@ class ProductMedia extends MagentoModuleAbstract
      *
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeMediaCurrentStore', array($storeView));
+        return $this->__createAction('catalog_product_attribute_media.currentStore', func_get_args());
     }
 
     /**
@@ -63,14 +61,11 @@ class ProductMedia extends MagentoModuleAbstract
      * @param string $storeView
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($productId, $file, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductAttributeMediaInfo',
-            array($productId, $file, $storeView, $identifierType)
-        );
+        return $this->__createAction('catalog_product_attribute_media.info', func_get_args());
     }
 
     /**
@@ -80,14 +75,11 @@ class ProductMedia extends MagentoModuleAbstract
      * @param string $storeView
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($productId, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductAttributeMediaList',
-            array($productId, $storeView, $identifierType)
-        );
+        return $this->__createAction('catalog_product_attribute_media.list', func_get_args());
     }
 
     /**
@@ -97,14 +89,11 @@ class ProductMedia extends MagentoModuleAbstract
      * @param  string $file
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function remove($productId, $file, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductAttributeMediaRemove',
-            array($productId, $file, $identifierType)
-        );
+        return $this->__createAction('catalog_product_attribute_media.remove', func_get_args());
     }
 
     /**
@@ -114,11 +103,11 @@ class ProductMedia extends MagentoModuleAbstract
      *
      * @param string $setId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getTypes($setId)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeMediaTypes', array($setId));
+        return $this->__createAction('catalog_product_attribute_media.types', func_get_args());
     }
 
     /**
@@ -130,16 +119,10 @@ class ProductMedia extends MagentoModuleAbstract
      * @param string $storeView
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($productId, $file, $data, $storeView = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductAttributeMediaUpdate(
-            $productId,
-            $file,
-            $data,
-            $storeView,
-            $identifierType
-        );
+        return $this->__createAction('catalog_product_attribute_media.update', func_get_args());
     }
 }

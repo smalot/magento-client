@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Directory;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -28,11 +29,11 @@ class Directory extends MagentoModuleAbstract
     /**
      * Retrieve the list of countries from Magento.
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getCountryList()
     {
-        return $this->remoteAdapter->call('directoryCountryList', array());
+        return $this->__createAction('directory_country.list', func_get_args());
     }
 
     /**
@@ -40,10 +41,10 @@ class Directory extends MagentoModuleAbstract
      *
      * @param string $country
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getRegionList($country)
     {
-        return $this->remoteAdapter->call('directoryRegionList', array($country));
+        return $this->__createAction('directory_region.list', func_get_args());
     }
 }

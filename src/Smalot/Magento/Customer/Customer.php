@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Customer;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -30,11 +31,11 @@ class Customer extends MagentoModuleAbstract
      *
      * @param array $customerData
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($customerData)
     {
-        return $this->remoteAdapter->call('customerCustomerCreate', array($customerData));
+        return $this->__createAction('customer.create', func_get_args());
     }
 
     /**
@@ -42,11 +43,11 @@ class Customer extends MagentoModuleAbstract
      *
      * @param int $customerId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function delete($customerId)
     {
-        return $this->remoteAdapter->call('customerCustomerDelete', array($customerId));
+        return $this->__createAction('customer.delete', func_get_args());
     }
 
     /**
@@ -55,11 +56,11 @@ class Customer extends MagentoModuleAbstract
      * @param int   $customerId
      * @param array $attributes
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($customerId, $attributes)
     {
-        return $this->remoteAdapter->call('customerCustomerInfo', array($customerId, $attributes));
+        return $this->__createAction('customer.info', func_get_args());
     }
 
     /**
@@ -67,11 +68,11 @@ class Customer extends MagentoModuleAbstract
      *
      * @param array $filters
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($filters)
     {
-        return $this->remoteAdapter->call('customerCustomerList', array($filters));
+        return $this->__createAction('customer.list', func_get_args());
     }
 
     /**
@@ -81,10 +82,10 @@ class Customer extends MagentoModuleAbstract
      * @param int   $customerId
      * @param array $customerData
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($customerId, $customerData)
     {
-        return $this->remoteAdapter->call('customerCustomerUpdate', array($customerId, $customerData));
+        return $this->__createAction('customer.update', func_get_args());
     }
 }

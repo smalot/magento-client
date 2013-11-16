@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -30,11 +31,11 @@ class ProductTag extends MagentoModuleAbstract
      *
      * @param array $data
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function add($data)
     {
-        return $this->remoteAdapter->call('catalogProductTagAdd', array($data));
+        return $this->__createAction('product_tag.add', func_get_args());
     }
 
     /**
@@ -43,11 +44,11 @@ class ProductTag extends MagentoModuleAbstract
      * @param string $tagId
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($tagId, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductTagInfo', array($tagId, $store));
+        return $this->__createAction('product_tag.info', func_get_args());
     }
 
     /**
@@ -56,11 +57,11 @@ class ProductTag extends MagentoModuleAbstract
      * @param string $productId
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($productId, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductTagList', array($productId, $store));
+        return $this->__createAction('product_tag.list', func_get_args());
     }
 
     /**
@@ -68,11 +69,11 @@ class ProductTag extends MagentoModuleAbstract
      *
      * @param string $tagId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function remove($tagId)
     {
-        return $this->remoteAdapter->call('catalogProductTagRemove', array($tagId));
+        return $this->__createAction('product_tag.remove', func_get_args());
     }
 
     /**
@@ -82,10 +83,10 @@ class ProductTag extends MagentoModuleAbstract
      * @param array  $data
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($tagId, $data, $store = null)
     {
-        return $this->remoteAdapter->call('catalogProductTagUpdate', array($tagId, $data, $store));
+        return $this->__createAction('product_tag.update', func_get_args());
     }
 }

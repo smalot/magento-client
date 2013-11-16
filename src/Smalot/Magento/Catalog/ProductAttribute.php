@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -31,11 +32,11 @@ class ProductAttribute extends MagentoModuleAbstract
      * @param string $attribute
      * @param array  $data
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function addOption($attribute, $data)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeAddOption', array($attribute, $data));
+        return $this->__createAction('product_attribute.addOption', func_get_args());
     }
 
     /**
@@ -43,11 +44,11 @@ class ProductAttribute extends MagentoModuleAbstract
      *
      * @param array $data
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($data)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeCreate', array($data));
+        return $this->__createAction('product_attribute.create', func_get_args());
     }
 
     /**
@@ -55,11 +56,11 @@ class ProductAttribute extends MagentoModuleAbstract
      *
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeCurrentStore', array($storeView));
+        return $this->__createAction('product_attribute.currentStore', func_get_args());
     }
 
     /**
@@ -67,11 +68,11 @@ class ProductAttribute extends MagentoModuleAbstract
      *
      * @param string $attribute
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($attribute)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeInfo', array($attribute));
+        return $this->__createAction('product_attribute.info', func_get_args());
     }
 
     /**
@@ -79,11 +80,11 @@ class ProductAttribute extends MagentoModuleAbstract
      *
      * @param string $setId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($setId)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeList', array($setId));
+        return $this->__createAction('product_attribute.list', func_get_args());
     }
 
     /**
@@ -92,11 +93,11 @@ class ProductAttribute extends MagentoModuleAbstract
      * @param string $attributeId
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getOptions($attributeId, $storeView = null)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeOptions', array($attributeId, $storeView));
+        return $this->__createAction('product_attribute.options', func_get_args());
     }
 
     /**
@@ -104,11 +105,11 @@ class ProductAttribute extends MagentoModuleAbstract
      *
      * @param string $attribute
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function remove($attribute)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeRemove', array($attribute));
+        return $this->__createAction('product_attribute.remove', func_get_args());
     }
 
     /**
@@ -117,21 +118,21 @@ class ProductAttribute extends MagentoModuleAbstract
      * @param string $attribute
      * @param string $optionId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function removeOption($attribute, $optionId)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeRemoveOption', array($attribute, $optionId));
+        return $this->__createAction('product_attribute.removeOption', func_get_args());
     }
 
     /**
      * Allows you to retrieve the list of possible attribute types.
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getTypes()
     {
-        return $this->remoteAdapter->call('catalogProductAttributeTypes', array());
+        return $this->__createAction('product_attribute.types', func_get_args());
     }
 
     /**
@@ -140,10 +141,10 @@ class ProductAttribute extends MagentoModuleAbstract
      * @param string $attribute
      * @param array  $data
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($attribute, $data)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeUpdate', array($attribute, $data));
+        return $this->__createAction('product_attribute.update', func_get_args());
     }
 }

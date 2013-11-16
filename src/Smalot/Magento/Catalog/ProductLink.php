@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -40,17 +41,11 @@ class ProductLink extends MagentoModuleAbstract
      * @param array  $data
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function assign($type, $productId, $linkedProductId, $data, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductLinkAssign(
-            $type,
-            $productId,
-            $linkedProductId,
-            $data,
-            $identifierType
-        );
+        return $this->__createAction('catalog_product_link.assign', func_get_args());
     }
 
     /**
@@ -58,11 +53,11 @@ class ProductLink extends MagentoModuleAbstract
      *
      * @param string $type
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getAttributes($type)
     {
-        return $this->remoteAdapter->call('catalogProductLinkAttributes', array($type));
+        return $this->__createAction('catalog_product_link.attributes', func_get_args());
     }
 
     /**
@@ -72,11 +67,11 @@ class ProductLink extends MagentoModuleAbstract
      * @param string $productId
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($type, $productId, $identifierType = null)
     {
-        return $this->remoteAdapter->call('catalogProductLinkList', array($type, $productId, $identifierType));
+        return $this->__createAction('catalog_product_link.list', func_get_args());
     }
 
     /**
@@ -87,24 +82,21 @@ class ProductLink extends MagentoModuleAbstract
      * @param string $linkedProductId
      * @param string $identifierType
      *
-     * @return int
+     * @return ActionInterface
      */
     public function remove($type, $productId, $linkedProductId, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductLinkRemove',
-            array($type, $productId, $linkedProductId, $identifierType)
-        );
+        return $this->__createAction('catalog_product_link.remove', func_get_args());
     }
 
     /**
      * Allows you to retrieve the list of product link types.
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getTypes()
     {
-        return $this->remoteAdapter->call('catalogProductLinkTypes', array());
+        return $this->__createAction('catalog_product_link.types', func_get_args());
     }
 
     /**
@@ -116,16 +108,10 @@ class ProductLink extends MagentoModuleAbstract
      * @param array  $data
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($type, $productId, $linkedProductId, $data, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductLinkUpdate(
-            $type,
-            $productId,
-            $linkedProductId,
-            $data,
-            $identifierType
-        );
+        return $this->__createAction('catalog_product_link.update', func_get_args());
     }
 }

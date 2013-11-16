@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -30,11 +31,11 @@ class Category extends MagentoModuleAbstract
      *
      * @param int $categoryId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getAssignedProducts($categoryId)
     {
-        return $this->remoteAdapter->call('catalogCategoryAssignedProducts', array($categoryId));
+        return $this->__createAction('catalog_category.assignedProducts', func_get_args());
     }
 
     /**
@@ -45,14 +46,11 @@ class Category extends MagentoModuleAbstract
      * @param string $position
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function assignProduct($categoryId, $productId, $position = null, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogCategoryAssignProduct',
-            array($categoryId, $productId, $position, $identifierType)
-        );
+        return $this->__createAction('catalog_category.assignProduct', func_get_args());
     }
 
     /**
@@ -62,11 +60,11 @@ class Category extends MagentoModuleAbstract
      * @param array  $categoryData
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($parentId, $categoryData, $storeView = null)
     {
-        return $this->remoteAdapter->call('catalogCategoryCreate', array($parentId, $categoryData, $storeView));
+        return $this->__createAction('catalog_category.create', func_get_args());
     }
 
     /**
@@ -74,11 +72,11 @@ class Category extends MagentoModuleAbstract
      *
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->call('catalogCategoryCurrentStore', array($storeView));
+        return $this->__createAction('catalog_category.currentStore', func_get_args());
     }
 
     /**
@@ -86,11 +84,11 @@ class Category extends MagentoModuleAbstract
      *
      * @param int $categoryId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function delete($categoryId)
     {
-        return $this->remoteAdapter->call('catalogCategoryDelete', array($categoryId));
+        return $this->__createAction('catalog_category.delete', func_get_args());
     }
 
     /**
@@ -100,11 +98,11 @@ class Category extends MagentoModuleAbstract
      * @param string $storeView
      * @param array  $attributes
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($categoryId, $storeView = null, $attributes = null)
     {
-        return $this->remoteAdapter->call('catalogCategoryInfo', array($categoryId, $storeView, $attributes));
+        return $this->__createAction('catalog_category.info', func_get_args());
     }
 
     /**
@@ -114,11 +112,11 @@ class Category extends MagentoModuleAbstract
      * @param string $storeView
      * @param string $parentCategory
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getLevel($website, $storeView = null, $parentCategory = null)
     {
-        return $this->remoteAdapter->call('catalogCategoryLevel', array($website, $storeView, $parentCategory));
+        return $this->__createAction('catalog_category.level', func_get_args());
     }
 
     /**
@@ -128,11 +126,11 @@ class Category extends MagentoModuleAbstract
      * @param int    $parentId
      * @param string $afterId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function move($categoryId, $parentId, $afterId = null)
     {
-        return $this->remoteAdapter->call('catalogCategoryMove', array($categoryId, $parentId, $afterId));
+        return $this->__createAction('catalog_category.move', func_get_args());
     }
 
     /**
@@ -142,14 +140,11 @@ class Category extends MagentoModuleAbstract
      * @param string $productId
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function removeProduct($categoryId, $productId, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogCategoryRemoveProduct',
-            array($categoryId, $productId, $identifierType)
-        );
+        return $this->__createAction('catalog_category.removeProduct', func_get_args());
     }
 
     /**
@@ -158,11 +153,11 @@ class Category extends MagentoModuleAbstract
      * @param string $parentId
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getTree($parentId = null, $storeView = null)
     {
-        return $this->remoteAdapter->call('catalogCategoryTree', array($parentId, $storeView));
+        return $this->__createAction('catalog_category.tree', func_get_args());
     }
 
     /**
@@ -172,11 +167,11 @@ class Category extends MagentoModuleAbstract
      * @param array  $categoryData
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($categoryId, $categoryData, $storeView = null)
     {
-        return $this->remoteAdapter->call('catalogCategoryUpdate', array($categoryId, $categoryData, $storeView));
+        return $this->__createAction('catalog_category.update', func_get_args());
     }
 
     /**
@@ -187,13 +182,10 @@ class Category extends MagentoModuleAbstract
      * @param string $position
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function updateProduct($categoryId, $productId, $position = null, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogCategoryUpdateProduct',
-            array($categoryId, $productId, $position, $identifierType)
-        );
+        return $this->__createAction('catalog_category.updateProduct', func_get_args());
     }
 }

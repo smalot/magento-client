@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Order;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -33,16 +34,11 @@ class OrderShipment extends MagentoModuleAbstract
      * @param string $email
      * @param string $includeInEmail
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function addComment($shipmentIncrementId, $comment = null, $email = null, $includeInEmail = null)
     {
-        return $this->remoteAdapter->salesOrderShipmentAddComment(
-            $shipmentIncrementId,
-            $comment,
-            $email,
-            $includeInEmail
-        );
+        return $this->__createAction('order_shipment.addComment', func_get_args());
     }
 
     /**
@@ -53,14 +49,11 @@ class OrderShipment extends MagentoModuleAbstract
      * @param string $title
      * @param string $trackNumber
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function addTrack($shipmentIncrementId, $carrier, $title, $trackNumber)
     {
-        return $this->remoteAdapter->call(
-            'salesOrderShipmentAddTrack',
-            array($shipmentIncrementId, $carrier, $title, $trackNumber)
-        );
+        return $this->__createAction('order_shipment.addTrack', func_get_args());
     }
 
     /**
@@ -72,17 +65,11 @@ class OrderShipment extends MagentoModuleAbstract
      * @param int    $email
      * @param int    $includeComment
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($orderIncrementId, $itemsQty = null, $comment = null, $email = null, $includeComment = null)
     {
-        return $this->remoteAdapter->salesOrderShipmentCreate(
-            $orderIncrementId,
-            $itemsQty,
-            $comment,
-            $email,
-            $includeComment
-        );
+        return $this->__createAction('order_shipment.create', func_get_args());
     }
 
     /**
@@ -90,11 +77,11 @@ class OrderShipment extends MagentoModuleAbstract
      *
      * @param string $orderIncrementId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getCarriers($orderIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderShipmentGetCarriers', array($orderIncrementId));
+        return $this->__createAction('order_shipment.getCarriers', func_get_args());
     }
 
     /**
@@ -102,11 +89,11 @@ class OrderShipment extends MagentoModuleAbstract
      *
      * @param $shipmentIncrementId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($shipmentIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderShipmentInfo', array($shipmentIncrementId));
+        return $this->__createAction('salesOrderShipmentInfo', func_get_args());
     }
 
     /**
@@ -115,11 +102,11 @@ class OrderShipment extends MagentoModuleAbstract
      *
      * @param array $filters
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($filters)
     {
-        return $this->remoteAdapter->call('salesOrderShipmentList', array($filters));
+        return $this->__createAction('order_shipment.list', func_get_args());
     }
 
     /**
@@ -128,10 +115,10 @@ class OrderShipment extends MagentoModuleAbstract
      * @param string $shipmentIncrementId
      * @param string $trackId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function removeTrack($shipmentIncrementId, $trackId)
     {
-        return $this->remoteAdapter->call('salesOrderShipmentRemoveTrack', array($shipmentIncrementId, $trackId));
+        return $this->__createAction('order_shipment.removeTrack', func_get_args());
     }
 }

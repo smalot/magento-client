@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Customer;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -31,11 +32,11 @@ class CustomerAddress extends MagentoModuleAbstract
      * @param int   $customerId
      * @param array $addressData
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($customerId, $addressData)
     {
-        return $this->remoteAdapter->call('customerAddressCreate', array($customerId, $addressData));
+        return $this->__createAction('customer_address.create', func_get_args());
     }
 
     /**
@@ -43,11 +44,11 @@ class CustomerAddress extends MagentoModuleAbstract
      *
      * @param int $addressId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function delete($addressId)
     {
-        return $this->remoteAdapter->call('customerAddressDelete', array($addressId));
+        return $this->__createAction('customer_address.delete', func_get_args());
     }
 
     /**
@@ -55,11 +56,11 @@ class CustomerAddress extends MagentoModuleAbstract
      *
      * @param int $addressId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($addressId)
     {
-        return $this->remoteAdapter->call('customerAddressInfo', array($addressId));
+        return $this->__createAction('customer_address.info', func_get_args());
     }
 
     /**
@@ -67,11 +68,11 @@ class CustomerAddress extends MagentoModuleAbstract
      *
      * @param int $customerId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($customerId)
     {
-        return $this->remoteAdapter->call('customerAddressList', array($customerId));
+        return $this->__createAction('customer_address.list', func_get_args());
     }
 
     /**
@@ -80,10 +81,10 @@ class CustomerAddress extends MagentoModuleAbstract
      * @param int   $addressId
      * @param array $addressData
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($addressId, $addressData)
     {
-        return $this->remoteAdapter->call('customerAddressUpdate', array($addressId, $addressData));
+        return $this->__createAction('customer_address.update', func_get_args());
     }
 }

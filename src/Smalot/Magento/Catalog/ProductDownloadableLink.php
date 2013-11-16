@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -38,17 +39,11 @@ class ProductDownloadableLink extends MagentoModuleAbstract
      * @param string $store
      * @param string $identifierType
      *
-     * @return int
+     * @return ActionInterface
      */
     public function add($productId, $resource, $resourceType, $store = null, $identifierType = null)
     {
-        return $this->remoteAdapter->catalogProductDownloadableLinkAdd(
-            $productId,
-            $resource,
-            $resourceType,
-            $store,
-            $identifierType
-        );
+        return $this->__createAction('product_downloadable_link.add', func_get_args());
     }
 
     /**
@@ -58,14 +53,11 @@ class ProductDownloadableLink extends MagentoModuleAbstract
      * @param string $store
      * @param string $identifierType
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getList($productId, $store = null, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductDownloadableLinkList',
-            array($productId, $store, $identifierType)
-        );
+        return $this->__createAction('product_downloadable_link.list', func_get_args());
     }
 
     /**
@@ -74,10 +66,10 @@ class ProductDownloadableLink extends MagentoModuleAbstract
      * @param string $linkId
      * @param string $resourceType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function remove($linkId, $resourceType)
     {
-        return $this->remoteAdapter->call('catalogProductDownloadableLinkRemove', array($linkId, $resourceType));
+        return $this->__createAction('product_downloadable_link.remove', func_get_args());
     }
 }

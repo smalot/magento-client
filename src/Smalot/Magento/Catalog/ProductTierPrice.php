@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -31,11 +32,11 @@ class ProductTierPrice extends MagentoModuleAbstract
      * @param string $productId
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($productId, $identifierType = null)
     {
-        return $this->remoteAdapter->call('catalogProductAttributeTierPriceInfo', array($productId, $identifierType));
+        return $this->__createAction('catalog_product_attribute_tier_price.info', func_get_args());
     }
 
     /**
@@ -45,13 +46,10 @@ class ProductTierPrice extends MagentoModuleAbstract
      * @param array  $tierPrices
      * @param string $identifierType
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($productId, $tierPrices, $identifierType = null)
     {
-        return $this->remoteAdapter->call(
-            'catalogProductAttributeTierPriceUpdate',
-            array($productId, $tierPrices, $identifierType)
-        );
+        return $this->__createAction('catalog_product_attribute_tier_price.update', func_get_args());
     }
 }

@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Cart;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -31,11 +32,11 @@ class CartPayment extends MagentoModuleAbstract
      * @param int    $quoteId
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($quoteId, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartPaymentList', array($quoteId, $store));
+        return $this->__createAction('cart_payment.list', func_get_args());
     }
 
     /**
@@ -45,10 +46,10 @@ class CartPayment extends MagentoModuleAbstract
      * @param array  $paymentData
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getMethod($quoteId, $paymentData, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartPaymentMethod', array($quoteId, $paymentData, $store));
+        return $this->__createAction('cart_payment.method', func_get_args());
     }
 }

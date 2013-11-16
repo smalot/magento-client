@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -36,5 +36,16 @@ abstract class MagentoModuleAbstract
     public function __construct(RemoteAdapterInterface $remoteAdapter)
     {
         $this->remoteAdapter = $remoteAdapter;
+    }
+
+    /**
+     * @param string $method
+     * @param array  $arguments
+     *
+     * @return Action
+     */
+    protected function __createAction($method, $arguments = array())
+    {
+        return new Action($method, $arguments, $this->remoteAdapter);
     }
 }

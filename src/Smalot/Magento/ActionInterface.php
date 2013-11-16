@@ -17,27 +17,31 @@
 namespace Smalot\Magento;
 
 /**
- * Interface RemoteAdapterInterface
+ * Class ActionInterface
  *
  * @package Smalot\Magento
  */
-interface RemoteAdapterInterface
+interface ActionInterface
 {
     /**
-     * @param ActionInterface $action
-     * @param bool            $throwsException
-     *
-     * @return array
-     * @throws \Exception
+     * @return string
      */
-    public function call(ActionInterface $action, $throwsException = false);
+    public function getMethod();
+
+    /**
+     * @return array
+     */
+    public function getArguments();
+
+    /**
+     * @return array
+     */
+    public function execute();
 
     /**
      * @param MultiCallQueueInterface $queue
-     * @param bool                    $throwsException
      *
-     * @return array
-     * @throws \Exception
+     * @return mixed
      */
-    public function multiCall(MultiCallQueueInterface $queue, $throwsException = false);
+    public function addToQueue(MultiCallQueueInterface $queue);
 }

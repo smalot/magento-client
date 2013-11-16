@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\CustomerBalance;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -31,11 +32,11 @@ class StoreCredit extends MagentoModuleAbstract
      * @param string $customerId
      * @param string $websiteId
      *
-     * @return string
+     * @return ActionInterface
      */
     public function getBalance($customerId, $websiteId)
     {
-        return $this->remoteAdapter->call('enterpriseCustomerbalanceBalance', array($customerId, $websiteId));
+        return $this->__createAction('storecredit.balance', func_get_args());
     }
 
     /**
@@ -44,10 +45,10 @@ class StoreCredit extends MagentoModuleAbstract
      * @param string $customerId
      * @param string $websiteId
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getHistory($customerId, $websiteId = null)
     {
-        return $this->remoteAdapter->call('enterpriseCustomerbalanceHistory', array($customerId, $websiteId));
+        return $this->__createAction('storecredit.history', func_get_args());
     }
 }

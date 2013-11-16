@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Customer;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -28,10 +29,10 @@ class CustomerGroup extends MagentoModuleAbstract
     /**
      * Retrieve the list of customer groups.
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getGroupList()
     {
-        return $this->remoteAdapter->call('customerGroupList', array());
+        return $this->__createAction('customer_group.ist', func_get_args());
     }
 }

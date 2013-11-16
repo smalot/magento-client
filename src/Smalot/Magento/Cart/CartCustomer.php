@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Cart;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -32,14 +33,11 @@ class CartCustomer extends MagentoModuleAbstract
      * @param array  $customerAddressData
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function setAddresses($quoteId, $customerAddressData, $store = null)
     {
-        return $this->remoteAdapter->call(
-            'shoppingCartCustomerAddresses',
-            array($quoteId, $customerAddressData, $store)
-        );
+        return $this->__createAction('cart_customer.addresses', func_get_args());
     }
 
     /**
@@ -49,10 +47,10 @@ class CartCustomer extends MagentoModuleAbstract
      * @param array  $customerData
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function setCustomer($quoteId, $customerData, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartCustomerSet', array($quoteId, $customerData, $store));
+        return $this->__createAction('cart_customer.set', func_get_args());
     }
 }

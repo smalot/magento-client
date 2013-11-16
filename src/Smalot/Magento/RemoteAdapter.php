@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -69,17 +69,17 @@ class RemoteAdapter implements RemoteAdapterInterface
     protected $soapClient = null;
 
     /**
-     * @param string $wsdl
+     * @param string $path
      * @param string $apiUser
      * @param string $apiKey
      * @param array  $options
      * @param bool   $autoLogin
      */
-    public function __construct($wsdl, $apiUser, $apiKey, $options = array(), $autoLogin = true)
+    public function __construct($path, $apiUser, $apiKey, $options = array(), $autoLogin = true)
     {
         $options = array_merge(self::$defaultOptions, $options);
 
-        $this->wsdl      = $wsdl;
+        $this->wsdl      = rtrim($path, '/') . '/index.php/api/soap/?wsdl';
         $this->apiUser   = $apiUser;
         $this->apiKey    = $apiKey;
         $this->options   = $options;
@@ -141,7 +141,7 @@ class RemoteAdapter implements RemoteAdapterInterface
             $apiKey = $this->apiKey;
         }
 
-        if ($this->sessionId = $this->soapClient->__soapCall('login', array($apiUser, $apiKey))) {
+        if ($this->sessionId = $this->soapClient->login($apiUser, $apiKey)) {
             return true;
         }
 
@@ -153,7 +153,7 @@ class RemoteAdapter implements RemoteAdapterInterface
      */
     public function ping()
     {
-        $info = $this->call('magentoInfo', array(), false);
+        $info = $this->call('core_magento.info', array(), true);
 
         return (is_object($info) || is_array($info));
     }
@@ -164,7 +164,7 @@ class RemoteAdapter implements RemoteAdapterInterface
     public function logout()
     {
         if (!is_null($this->sessionId)) {
-            $this->call('logout', array(), false);
+            $this->call('logout', array(), true);
             $this->sessionId = null;
 
             return true;
@@ -174,14 +174,13 @@ class RemoteAdapter implements RemoteAdapterInterface
     }
 
     /**
-     * @param string $method
-     * @param array  $params
-     * @param bool   $throwsException
+     * @param ActionInterface $action
+     * @param bool            $throwsException
      *
-     * @return mixed
+     * @return array|null
      * @throws \Exception
      */
-    public function call($method, $params = array(), $throwsException = true)
+    public function call(ActionInterface $action, $throwsException = true)
     {
         try {
             if (is_null($this->sessionId) && $this->autoLogin) {
@@ -192,9 +191,7 @@ class RemoteAdapter implements RemoteAdapterInterface
                 throw new \Exception('Not connected.');
             }
 
-            array_unshift($params, $this->sessionId);
-
-            $result = $this->soapClient->__soapCall($method, $params);
+            $result = $this->soapClient->call($this->sessionId, $action->getMethod(), $action->getArguments());
 
             return $result;
 
@@ -204,6 +201,43 @@ class RemoteAdapter implements RemoteAdapterInterface
             }
 
             return null;
+        }
+    }
+
+    /**
+     * @param array $calls
+     * @param bool  $throwsException
+     *
+     * @return array
+     * @throws \Exception
+     */
+    public function multiCall(MultiCallQueueInterface $queue, $throwsException = false)
+    {
+        try {
+            if (is_null($this->sessionId) && $this->autoLogin) {
+                $this->login();
+            }
+
+            if (is_null($this->sessionId)) {
+                throw new \Exception('Not connected.');
+            }
+
+            $actions = array();
+
+            /** @var $action ActionInterface */
+            foreach ($queue as $action) {
+                $actions[] = array(
+                    $action->getMethod(),
+                    $action->getArguments(),
+                );
+            }
+
+            $results = $this->soapClient->multiCall($this->sessionId, $actions);
+
+            return $results;
+
+        } catch (\Exception $e) {
+            return array();
         }
     }
 

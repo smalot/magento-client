@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Order;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -34,16 +35,11 @@ class OrderCreditMemo extends MagentoModuleAbstract
      * @param string $notifyCustomer
      * @param string $includeComment
      *
-     * @return int
+     * @return ActionInterface
      */
     public function addComment($creditmemoIncrementId, $comment = null, $notifyCustomer = null, $includeComment = null)
     {
-        return $this->remoteAdapter->salesOrderCreditmemoAddComment(
-            $creditmemoIncrementId,
-            $comment,
-            $notifyCustomer,
-            $includeComment
-        );
+        return $this->__createAction('order_creditmemo.addComment', func_get_args());
     }
 
     /**
@@ -51,11 +47,11 @@ class OrderCreditMemo extends MagentoModuleAbstract
      *
      * @param string $creditmemoIncrementId
      *
-     * @return int
+     * @return ActionInterface
      */
     public function cancel($creditmemoIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderCreditmemoCancel', array($creditmemoIncrementId));
+        return $this->__createAction('order_creditmemo.cancel', func_get_args());
     }
 
     /**
@@ -69,7 +65,7 @@ class OrderCreditMemo extends MagentoModuleAbstract
      * @param int    $includeComment
      * @param string $refundToStoreCreditAmount
      *
-     * @return string
+     * @return ActionInterface
      */
     public function create(
         $orderIncrementId,
@@ -79,14 +75,7 @@ class OrderCreditMemo extends MagentoModuleAbstract
         $includeComment = null,
         $refundToStoreCreditAmount = null
     ) {
-        return $this->remoteAdapter->salesOrderCreditmemoCreate(
-            $orderIncrementId,
-            $creditmemoData,
-            $comment,
-            $notifyCustomer,
-            $includeComment,
-            $refundToStoreCreditAmount
-        );
+        return $this->__createAction('order_creditmemo.create', func_get_args());
     }
 
     /**
@@ -94,11 +83,11 @@ class OrderCreditMemo extends MagentoModuleAbstract
      *
      * @param string $creditmemoIncrementId
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getInfo($creditmemoIncrementId)
     {
-        return $this->remoteAdapter->call('salesOrderCreditmemoInfo', array($creditmemoIncrementId));
+        return $this->__createAction('order_creditmemo.info', func_get_args());
     }
 
     /**
@@ -106,10 +95,10 @@ class OrderCreditMemo extends MagentoModuleAbstract
      *
      * @param array $filters
      *
-     * @return array
+     * @return ActionInterface
      */
     public function getList($filters)
     {
-        return $this->remoteAdapter->call('salesOrderCreditmemoList', array($filters));
+        return $this->__createAction('order_creditmemo.list', func_get_args());
     }
 }

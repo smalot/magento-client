@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Cart;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -32,11 +33,11 @@ class CartProduct extends MagentoModuleAbstract
      * @param array  $productsData
      * @param string $storeId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function add($quoteId, $productsData, $storeId = null)
     {
-        return $this->remoteAdapter->call('shoppingCartProductAdd', array($quoteId, $productsData, $storeId));
+        return $this->__createAction('cart_product.add', func_get_args());
     }
 
     /**
@@ -45,11 +46,11 @@ class CartProduct extends MagentoModuleAbstract
      * @param int    $quoteId
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList($quoteId, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartProductList', array($quoteId, $store));
+        return $this->__createAction('cart_product.list', func_get_args());
     }
 
     /**
@@ -59,14 +60,11 @@ class CartProduct extends MagentoModuleAbstract
      * @param array  $productsData
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function moveToCustomerQuote($quoteId, $productsData, $store = null)
     {
-        return $this->remoteAdapter->call(
-            'shoppingCartProductMoveToCustomerQuote',
-            array($quoteId, $productsData, $store)
-        );
+        return $this->__createAction('cart_product.moveToCustomerQuote', func_get_args());
     }
 
     /**
@@ -76,11 +74,11 @@ class CartProduct extends MagentoModuleAbstract
      * @param array  $productsData
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function remove($quoteId, $productsData, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartProductRemove', array($quoteId, $productsData, $store));
+        return $this->__createAction('cart_product.remove', func_get_args());
     }
 
     /**
@@ -90,10 +88,10 @@ class CartProduct extends MagentoModuleAbstract
      * @param array  $productsData
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function update($quoteId, $productsData, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartProductUpdate', array($quoteId, $productsData, $store));
+        return $this->__createAction('cart_product.update', func_get_args());
     }
 }

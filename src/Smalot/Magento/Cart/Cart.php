@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Cart;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -30,11 +31,11 @@ class Cart extends MagentoModuleAbstract
      *
      * @param string $storeId
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function create($storeId = null)
     {
-        return $this->remoteAdapter->call('shoppingCartCreate', array($storeId));
+        return $this->__createAction('cart.create', func_get_args());
     }
 
     /**
@@ -43,11 +44,11 @@ class Cart extends MagentoModuleAbstract
      * @param int    $quoteId
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getInfo($quoteId, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartInfo', array($quoteId, $store));
+        return $this->__createAction('cart.info', func_get_args());
     }
 
     /**
@@ -56,11 +57,11 @@ class Cart extends MagentoModuleAbstract
      * @param int    $quoteId
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getLicense($quoteId, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartLicense', array($quoteId, $store));
+        return $this->__createAction('cart.license', func_get_args());
     }
 
     /**
@@ -71,11 +72,11 @@ class Cart extends MagentoModuleAbstract
      * @param string $store
      * @param array  $agreements
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function order($quoteId, $store = null, $agreements = null)
     {
-        return $this->remoteAdapter->call('shoppingCartOrder', array($quoteId, $store, $agreements));
+        return $this->__createAction('cart.order', func_get_args());
     }
 
     /**
@@ -84,10 +85,10 @@ class Cart extends MagentoModuleAbstract
      * @param int    $quoteId
      * @param string $store
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getTotals($quoteId, $store = null)
     {
-        return $this->remoteAdapter->call('shoppingCartTotals', array($quoteId, $store));
+        return $this->__createAction('cart.totals', func_get_args());
     }
 }

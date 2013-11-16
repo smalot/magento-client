@@ -2,7 +2,7 @@
 
 /**
  * @file
- *          Magento API Client (SOAP v2 - standard).
+ *          Magento API Client (SOAP v1).
  *          Allows wrappers for each call, dependencies injections
  *          and code completion.
  *
@@ -16,6 +16,7 @@
 
 namespace Smalot\Magento\Catalog;
 
+use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
 
 /**
@@ -30,21 +31,21 @@ class CategoryAttributes extends MagentoModuleAbstract
      *
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function setCurrentStore($storeView)
     {
-        return $this->remoteAdapter->call('catalogCategoryCurrentStore', array($storeView));
+        return $this->__createAction('catalog_category_attribute.currentStore', func_get_args());
     }
 
     /**
      * Allows you to retrieve the list of category attributes.
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getList()
     {
-        return $this->remoteAdapter->call('catalogCategoryAttributeList', array());
+        return $this->__createAction('catalog_category_attribute.list', func_get_args());
     }
 
     /**
@@ -53,10 +54,10 @@ class CategoryAttributes extends MagentoModuleAbstract
      * @param string $attributeId
      * @param string $storeView
      *
-     * @return mixed
+     * @return ActionInterface
      */
     public function getOptions($attributeId, $storeView = null)
     {
-        return $this->remoteAdapter->call('catalogCategoryAttributeOptions', array($attributeId, $storeView));
+        return $this->__createAction('catalog_category_attribute.options', func_get_args());
     }
 }
