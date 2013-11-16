@@ -1,6 +1,6 @@
 {
     "name": "smalot/magento-client",
-    "description": "Magento API Client (SOAP v2 - standard). Allow wrappers for each call, dependencies injections and code completion.",
+    "description": "Magento API Client (SOAP v1). Allow wrappers for each call, dependencies injections and code completion.",
     "license": "GPL-2.0",
     "authors": [
         {
