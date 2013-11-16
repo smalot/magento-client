@@ -153,7 +153,7 @@ class RemoteAdapter implements RemoteAdapterInterface
      */
     public function ping()
     {
-        $info = $this->call(new Action('core_magento.info', array()), false);
+        $info = $this->call(new Action('core_magento.info'), false);
 
         return (is_object($info) || is_array($info));
     }
@@ -164,7 +164,7 @@ class RemoteAdapter implements RemoteAdapterInterface
     public function logout()
     {
         if (!is_null($this->sessionId)) {
-            $this->call('logout', array(), true);
+            $this->call(new Action('logout'), false);
             $this->sessionId = null;
 
             return true;
