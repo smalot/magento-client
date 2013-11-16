@@ -40,4 +40,9 @@ interface RemoteAdapterInterface
      * @throws \Exception
      */
     public function multiCall(MultiCallQueueInterface $queue, $throwsException = false);
+
+    /**
+     * @return bool
+     */
+    public function ping();
 }
