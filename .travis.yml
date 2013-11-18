@@ -10,6 +10,7 @@ php:
   - 5.5
 
 before_script:
+# install apache
   - sudo apt-get update > /dev/null
   - sudo apt-get install -y --force-yes apache2 libapache2-mod-php5 php5-curl php5-mysql php5-intl
   - sudo a2enmod actions
@@ -17,12 +18,23 @@ before_script:
   - echo "export PATH=/home/vagrant/.phpenv/bin:$PATH" | sudo tee -a /etc/apache2/envvars > /dev/null
   - echo "$(curl -fsSL https://gist.github.com/roderik/16d751c979fdeb5a14e3/raw/gistfile1.txt)" | sudo tee /etc/apache2/conf.d/phpconfig > /dev/null
   - echo "$(curl -fsSL https://gist.github.com/roderik/2eb301570ed4a1f4c33d/raw/gistfile1.txt)" | sed -e "s,PATH,`pwd`/web,g" | sudo tee /etc/apache2/sites-available/default > /dev/null
-  - sudo service apache2 restart  
+  - sudo service apache2 restart
+
+# setup mysql database
   - "mysql -e 'create database magento_travis;'"
-  - "composer update --prefer-source"
+
+# clone magento and install data set test
+  - wget -O modgit https://raw.github.com/jreinke/modgit/master/modgit
+  - chmod +x modgit
+  - sudo mv modgit /usr/local/bin
+  - modgit init
+  - modgit clone -t 1.7.0.2 magento https://github.com/jreinke/magento-mirror.git
   - wget -O magento-sample-data-1.6.1.0.zip http://www.magentocommerce.com/downloads/assets/1.6.1.0/magento-sample-data-1.6.1.0.zip
   - unzip -q magento-sample-data-1.6.1.0.zip
   - mysql -uroot magento_travis < magento-sample-data-1.6.1.0/magento_sample_data_for_1.6.1.0.sql
   - php -f install.php -- --license_agreement_accepted yes --locale en_GB --timezone Europe/Paris --default_currency EUR --db_host localhost --db_name magento_travis --db_user travis --db_pass "" --url http://travis.magento.local/ --skip_url_validation yes --use_rewrites yes --use_secure no --secure_base_url --use_secure_admin no --admin_firstname Sebastien --admin_lastname Malot --admin_email admin@example.com --admin_username admin --admin_password magento123
+
+# clone current project and download dependencies
+  - "composer update --prefer-source"
 
 script: curl "http://travis.magento.local/"
