@@ -28,9 +28,9 @@ before_script:
   - chmod +x modgit
   - sudo mv modgit /usr/local/bin
   - modgit init
-  - modgit clone -t 1.7.0.2 magento https://github.com/jreinke/magento-mirror.git
+  - modgit clone -t 1.7.0.2 magento https://github.com/jreinke/magento-mirror.git > /dev/null
   - wget -O magento-sample-data-1.6.1.0.zip http://www.magentocommerce.com/downloads/assets/1.6.1.0/magento-sample-data-1.6.1.0.zip
-  - unzip -q magento-sample-data-1.6.1.0.zip
+  - unzip -q magento-sample-data-1.6.1.0.zip > /dev/null
   - mysql -uroot magento_travis < magento-sample-data-1.6.1.0/magento_sample_data_for_1.6.1.0.sql
   - php -f install.php -- --license_agreement_accepted yes --locale en_GB --timezone Europe/Paris --default_currency EUR --db_host localhost --db_name magento_travis --db_user travis --db_pass "" --url http://travis.magento.local/ --skip_url_validation yes --use_rewrites yes --use_secure no --secure_base_url --use_secure_admin no --admin_firstname Sebastien --admin_lastname Malot --admin_email admin@example.com --admin_username admin --admin_password magento123
 
