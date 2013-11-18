@@ -32,9 +32,11 @@ before_script:
   - wget -O magento-sample-data-1.6.1.0.zip http://www.magentocommerce.com/downloads/assets/1.6.1.0/magento-sample-data-1.6.1.0.zip
   - unzip -q magento-sample-data-1.6.1.0.zip > /dev/null
   - mysql -uroot magento_travis < magento-sample-data-1.6.1.0/magento_sample_data_for_1.6.1.0.sql
-  - php -f install.php -- --license_agreement_accepted yes --locale en_GB --timezone Europe/Paris --default_currency EUR --db_host localhost --db_name magento_travis --db_user travis --db_pass "" --url http://travis.magento.local/ --skip_url_validation yes --use_rewrites yes --use_secure no --secure_base_url --use_secure_admin no --admin_firstname Sebastien --admin_lastname Malot --admin_email admin@example.com --admin_username admin --admin_password magento123
+  - php -f install.php -- --license_agreement_accepted yes --locale en_GB --timezone Europe/Paris --default_currency EUR --db_host localhost --db_name magento_travis --db_user travis --db_pass "" --url http://localhost/ --skip_url_validation yes --use_rewrites yes --use_secure no --secure_base_url --use_secure_admin no --admin_firstname Sebastien --admin_lastname Malot --admin_email admin@example.com --admin_username admin --admin_password magento123
 
 # clone current project and download dependencies
-  - "composer update --prefer-source"
+  - curl -sS https://getcomposer.org/installer | php
+  - chmod +x composer.phar
+  - ./composer.phar update --prefer-source
 
-script: curl "http://travis.magento.local/"
+script: curl "http://localhost/"
