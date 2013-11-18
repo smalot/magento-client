@@ -71,7 +71,7 @@ Composer will install the bundle to your project's `vendor/smalot` directory and
 
 This library is provided under GPLv2 license. See the complete license :
 
-    [LICENSE](https://github.com/smalot/magento-client/blob/master/LICENSE)
+    LICENSE
 
 # Implementation
 
