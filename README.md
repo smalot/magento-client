@@ -17,33 +17,33 @@ Features:
 
 # Documentation
 
-This API is fully modeled on top of [Magento SOAP API](http://www.magentocommerce.com/api/soap/introduction.html).
+This API is designed on top of [Magento SOAP API V1](http://www.magentocommerce.com/api/soap/introduction.html).
 
 Supported modules are :
-* Mage_Catalog
-* Mage_CatalogInventory
-* Mage_Checkout
-* Mage_Customer
-* Mage_Directory
-* Mage_Sales
-* Enterprise_CustomerBalance
-* Enterprise_CustomerGiftCard
-* Mage_GiftMessage
-* Mage_Core
-* Store View
+- Mage_Catalog
+- Mage_CatalogInventory
+- Mage_Checkout
+- Mage_Customer
+- Mage_Directory
+- Mage_Sales
+- Enterprise_CustomerBalance
+- Enterprise_CustomerGiftCard
+- Mage_GiftMessage
+- Mage_Core
+- Store View
 
 Module's names has been standardized to be more clean :
-* Catalog
-* CatalogInventory
-* Cart
-* Customer
-* Directory
-* Order
-* CustomerBalance
-* GiftCard (*todo*)
-* GiftMessage
-* Core
-* Store
+- Catalog
+- CatalogInventory
+- Cart
+- Customer
+- Directory
+- Order
+- CustomerBalance
+- GiftCard
+- GiftMessage
+- Core
+- Store
 
 **Note :** `login` and `logout` calls are made only if needed.
 
