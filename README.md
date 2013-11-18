@@ -67,8 +67,9 @@ This library is provided under GPLv2 license. See the complete license :
 
 # Implementation
 
+## Single Call
 
-Here is a sample code to load tree of categories of the `default` website.
+Here is a sample code to load tree of categories of the `default` website in a single call.
 
 ```php
 <?php
@@ -77,17 +78,49 @@ Here is a sample code to load tree of categories of the `default` website.
 include 'vendor/autoload.php';
 
 // Init config
-$wsdl    = 'http://domainname.tld/index.php/api/v2_soap/?wsdl';
+$path    = 'http://domainname.tld/shop-folder/';
 $apiUser = 'username';
 $apiKey  = 'xxxxxxxxxxxxxxxxxxx';
 
 // Create remote adapter which wrap soapclient
-$adapter  = new \Smalot\Magento\RemoteAdapter($wsdl, $apiUser, $apiKey);
+$adapter  = new \Smalot\Magento\RemoteAdapter($path, $apiUser, $apiKey);
 
 // Call any module's class
-$category = new \Smalot\Magento\Catalog\Category($adapter);
-$tree    = $catalogCategory->getTree();
+$categoryManager = new \Smalot\Magento\Catalog\Category($adapter);
+$tree            = $categoryManager->getTree()->execute();
 
 var_dump($tree);
+
+```
+
+## Multi Call
+
+```php
+<?php
+
+// Include composer's autoloader mecanism
+include 'vendor/autoload.php';
+
+// Init config
+$path    = 'http://domainname.tld/shop-folder/';
+$apiUser = 'username';
+$apiKey  = 'xxxxxxxxxxxxxxxxxxx';
+
+// Create remote adapter which wrap soapclient
+$adapter  = new \Smalot\Magento\RemoteAdapter($path, $apiUser, $apiKey);
+
+// Build the queue for multicall
+$queue = new \Smalot\Magento\MultiCallQueue($adapter);
+
+// Call any module's class
+$productManager = new \Smalot\Magento\Catalog\Product($adapter);
+$productManager->getInfo(10)->addToQueue($queue);
+$productManager->getInfo(11)->addToQueue($queue);
+$productManager->getInfo(12)->addToQueue($queue);
+
+// Request in one multicall information of 3 products (#10, #11, #12)
+$products = $queue->execute();
+
+var_dump($products);
 
 ```
