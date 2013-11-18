@@ -1,7 +1,15 @@
 # Magento API Client
 
 This library implements the [Magento](http://www.magentocommerce.com/) SOAP v1 (standard) API.
-It allows wrappers for each call, dependencies injections (eg: used in [Symfony 2.x](http://symfony.com/)) and code completion.
+
+Features:
+
+- allows wrappers
+- allows dependencies injections
+- allows code completion
+- auto-updated via [composer](http://www.getcomposer.org) packaging ([packagist.org](http://www.packagist.org))
+
+**Note:** This library is not related to [http://magento.com/](Magento Company).
 
 [![Build Status](https://travis-ci.org/smalot/magento-client.png?branch=master)](https://travis-ci.org/smalot/magento-client)
 [![Total Downloads](https://poser.pugx.org/smalot/magento-client/downloads.png)](https://packagist.org/packages/smalot/magento-client)
