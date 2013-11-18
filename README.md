@@ -67,6 +67,12 @@ This library is provided under GPLv2 license. See the complete license :
 
 # Implementation
 
+Each `module manager`, which heritate from `MagentoModuleAbstract`, will generate an `action`.
+
+Actions can be either directly executed or added to a `queue`.
+
+If it is directly executed, it will generate a `single call`, if not, that's a `multi call`.
+
 ## Single Call
 
 Here is a sample code to load tree of categories of the `default` website in a single call.
@@ -94,6 +100,16 @@ var_dump($tree);
 ```
 
 ## Multi Call
+
+Multi call is only available on `Magento Soap v1`.
+
+That's why this library is built on top of `Magento Soap v1`.
+
+This function allows to group multiple soap calls into only one http request, which can be a very great optimization practice.
+
+It removes `network latency` and reduce magento bootstrap processes.
+
+Tipically, it can be used to synchronize a whole product catalog into very few number of calls.
 
 ```php
 <?php
