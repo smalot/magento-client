@@ -9,7 +9,7 @@ Features:
 - allows code completion
 - auto-updated via [composer](http://www.getcomposer.org) packaging ([packagist.org](http://www.packagist.org))
 
-**Note:** This library is not related to [http://magento.com/](Magento Company).
+**Note:** This library is not related to [Magento Company](http://magento.com/).
 
 [![Build Status](https://travis-ci.org/smalot/magento-client.png?branch=master)](https://travis-ci.org/smalot/magento-client)
 [![Total Downloads](https://poser.pugx.org/smalot/magento-client/downloads.png)](https://packagist.org/packages/smalot/magento-client)
