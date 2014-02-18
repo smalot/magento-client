@@ -148,3 +148,7 @@ $products = $queue->execute();
 var_dump($products);
 
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/smalot/magento-client/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
