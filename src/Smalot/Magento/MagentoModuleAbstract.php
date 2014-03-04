@@ -42,7 +42,7 @@ abstract class MagentoModuleAbstract
      * @param string $method
      * @param array  $arguments
      *
-     * @return Action
+     * @return ActionInterface
      */
     protected function __createAction($method, $arguments = array())
     {
