@@ -149,3 +149,40 @@ $products = $queue->execute();
 var_dump($products);
 
 ```
+
+### Callback support for multicall
+
+```php
+<?php
+
+// Include composer's autoloader mecanism
+include 'vendor/autoload.php';
+
+// Init config
+$path    = 'http://domainname.tld/shop-folder/';
+$apiUser = 'username';
+$apiKey  = 'xxxxxxxxxxxxxxxxxxx';
+
+// Create remote adapter which wrap soapclient
+$adapter  = new \Smalot\Magento\RemoteAdapter($path, $apiUser, $apiKey);
+
+// Build the queue for multicall
+$queue = new \Smalot\Magento\MultiCallQueue($adapter);
+
+// Local catalog adapter
+$localAdapter = new LocalAdapter(....);
+
+// Store categories
+$categoryManager = new \Smalot\Magento\Catalog\Category($adapter);
+$categoryManager->getTree()->addToQueue($queue, array($localAdapter, 'updateCategories'));
+
+// Store products into local catalog
+$productManager = new \Smalot\Magento\Catalog\Product($adapter);
+$productManager->getInfo(10)->addToQueue($queue, array($localAdapter, 'updateProduct'));
+$productManager->getInfo(11)->addToQueue($queue, array($localAdapter, 'updateProduct'));
+$productManager->getInfo(12)->addToQueue($queue, array($localAdapter, 'updateProduct'));
+
+// Update local catalog
+$products = $queue->execute();
+
+```
