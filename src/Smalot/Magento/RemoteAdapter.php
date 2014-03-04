@@ -77,23 +77,13 @@ class RemoteAdapter implements RemoteAdapterInterface
      */
     public function __construct($path, $apiUser, $apiKey, $options = array(), $autoLogin = true)
     {
-        $options = array_merge(self::$defaultOptions, $options);
-
         $this->wsdl      = rtrim($path, '/') . '/index.php/api/soap/?wsdl';
         $this->apiUser   = $apiUser;
         $this->apiKey    = $apiKey;
-        $this->options   = $options;
         $this->autoLogin = $autoLogin;
 
-        $this->init();
-    }
-
-    /**
-     *
-     */
-    public function init()
-    {
-        $this->soapClient = new \SoapClient($this->wsdl, $this->options);
+        $this->setOptions($options);
+        $this->soapClient = new \SoapClient($this->wsdl, $this->getOptions());
     }
 
     /**
@@ -106,6 +96,26 @@ class RemoteAdapter implements RemoteAdapterInterface
         unset($this->options);
         unset($this->sessionId);
         unset($this->soapClient);
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param $options
+     *
+     * @return $this
+     */
+    public function setOptions($options)
+    {
+        $this->options = array_merge(self::$defaultOptions, $options);
+
+        return $this;
     }
 
     /**
@@ -133,11 +143,11 @@ class RemoteAdapter implements RemoteAdapterInterface
      */
     public function login($apiUser = null, $apiKey = null)
     {
-        if (is_null($apiUser)) {
+        if (null === $apiUser) {
             $apiUser = $this->apiUser;
         }
 
-        if (is_null($apiKey)) {
+        if (null === $apiKey) {
             $apiKey = $this->apiKey;
         }
 
@@ -163,7 +173,7 @@ class RemoteAdapter implements RemoteAdapterInterface
      */
     public function logout()
     {
-        if (!is_null($this->sessionId)) {
+        if (null !== $this->sessionId) {
             $this->call(new Action('logout'), false);
             $this->sessionId = null;
 
@@ -174,22 +184,30 @@ class RemoteAdapter implements RemoteAdapterInterface
     }
 
     /**
+     * @throws RemoteAdapterException
+     */
+    protected function checkSecurity()
+    {
+        if (null === $this->sessionId && $this->autoLogin) {
+            $this->login();
+        }
+
+        if (null === $this->sessionId) {
+            throw new RemoteAdapterException('Not connected.');
+        }
+    }
+
+    /**
      * @param ActionInterface $action
      * @param bool            $throwsException
      *
-     * @return array|null
+     * @return array|false
      * @throws \Exception
      */
     public function call(ActionInterface $action, $throwsException = true)
     {
         try {
-            if (is_null($this->sessionId) && $this->autoLogin) {
-                $this->login();
-            }
-
-            if (is_null($this->sessionId)) {
-                throw new \Exception('Not connected.');
-            }
+            $this->checkSecurity();
 
             $result = $this->soapClient->call($this->sessionId, $action->getMethod(), $action->getArguments());
 
@@ -200,44 +218,73 @@ class RemoteAdapter implements RemoteAdapterInterface
                 throw $e;
             }
 
-            return null;
+            return false;
         }
     }
 
     /**
-     * @param array $calls
+     * @param MultiCallQueueInterface $queue
      * @param bool  $throwsException
      *
-     * @return array
+     * @return array|false
      * @throws \Exception
      */
-    public function multiCall(MultiCallQueueInterface $queue, $throwsException = false)
+    public function multiCall(MultiCallQueueInterface $queue, $throwsException = true)
     {
         try {
-            if (is_null($this->sessionId) && $this->autoLogin) {
-                $this->login();
-            }
+            $this->checkSecurity();
 
-            if (is_null($this->sessionId)) {
-                throw new \Exception('Not connected.');
-            }
-
-            $actions = array();
-
-            /** @var $action ActionInterface */
-            foreach ($queue as $action) {
-                $actions[] = array(
-                    $action->getMethod(),
-                    $action->getArguments(),
-                );
-            }
-
+            $actions = $this->getActions($queue);
             $results = $this->soapClient->multiCall($this->sessionId, $actions);
+
+            $this->handleCallbacks($queue, $results);
 
             return $results;
 
         } catch (\Exception $e) {
-            return array();
+            if ($throwsException) {
+                throw $e;
+            }
+
+            return false;
+        }
+    }
+
+    /**
+     * @param MultiCallQueueInterface $queue
+     *
+     * @return array
+     */
+    protected function getActions(MultiCallQueueInterface $queue)
+    {
+        $actions = array();
+
+        foreach ($queue as $item) {
+            $action = $item['action'];
+
+            /** @var $action ActionInterface */
+            $actions[] = array(
+                $action->getMethod(),
+                $action->getArguments(),
+            );
+        }
+
+        return $actions;
+    }
+
+    /**
+     * @param MultiCallQueueInterface $queue
+     * @param array                   $results
+     */
+    protected function handleCallbacks(MultiCallQueueInterface $queue, $results)
+    {
+        foreach ($queue as $position => $item) {
+            $action   = $item['action'];
+            $callback = $item['callback'];
+
+            if (is_callable($callback)) {
+                $callback($results[$position], $action);
+            }
         }
     }
 

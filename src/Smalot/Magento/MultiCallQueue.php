@@ -50,12 +50,16 @@ class MultiCallQueue implements MultiCallQueueInterface
 
     /**
      * @param ActionInterface $action
+     * @param callable        $callback
      *
      * @return $this
      */
-    public function addAction(ActionInterface $action)
+    public function addAction(ActionInterface $action, $callback = null)
     {
-        $this->queue[] = $action;
+        $this->queue[] = array(
+            'action'   => $action,
+            'callback' => $callback,
+        );
 
         return $this;
     }
