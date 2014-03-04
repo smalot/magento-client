@@ -76,11 +76,12 @@ class Action implements ActionInterface
 
     /**
      * @param MultiCallQueueInterface $queue
+     * @param callable                $callback
      *
      * @return mixed|void
      */
-    public function addToQueue(MultiCallQueueInterface $queue)
+    public function addToQueue(MultiCallQueueInterface $queue, $callback = null)
     {
-        $queue->addAction($this);
+        $queue->addAction($this, $callback);
     }
 }

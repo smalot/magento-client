@@ -40,8 +40,9 @@ interface ActionInterface
 
     /**
      * @param MultiCallQueueInterface $queue
+     * @param callable                $callback
      *
      * @return mixed
      */
-    public function addToQueue(MultiCallQueueInterface $queue);
+    public function addToQueue(MultiCallQueueInterface $queue, $callback = null);
 }
