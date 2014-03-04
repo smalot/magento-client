@@ -25,10 +25,11 @@ interface MultiCallQueueInterface extends \ArrayAccess, \Iterator, \Countable
 {
     /**
      * @param ActionInterface $action
+     * @param callable        $callback
      *
      * @return mixed
      */
-    public function addAction(ActionInterface $action);
+    public function addAction(ActionInterface $action, $callback = null);
 
     /**
      * @return $this
