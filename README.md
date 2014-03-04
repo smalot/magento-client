@@ -69,7 +69,7 @@ Composer will install the bundle to your project's `vendor/smalot` directory and
 
 # License
 
-This library is provided under GPLv2 license. See the complete license :
+This library is provided under MIT license (since v0.5.0 release). See the complete license :
 
     LICENSE
 
@@ -148,7 +148,3 @@ $products = $queue->execute();
 var_dump($products);
 
 ```
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/smalot/magento-client/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-

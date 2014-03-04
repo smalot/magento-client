@@ -7,7 +7,7 @@
  *          and code completion.
  *
  * @author  Sébastien MALOT <sebastien@malot.fr>
- * @license GPL-2.0
+ * @license MIT
  * @url     <https://github.com/smalot/magento-client>
  *
  * For the full copyright and license information, please view the LICENSE
