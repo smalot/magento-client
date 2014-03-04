@@ -224,7 +224,7 @@ class RemoteAdapter implements RemoteAdapterInterface
 
     /**
      * @param MultiCallQueueInterface $queue
-     * @param bool  $throwsException
+     * @param bool                    $throwsException
      *
      * @return array|false
      * @throws \Exception
