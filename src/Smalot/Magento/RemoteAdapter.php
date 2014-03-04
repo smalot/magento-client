@@ -279,11 +279,10 @@ class RemoteAdapter implements RemoteAdapterInterface
     protected function handleCallbacks(MultiCallQueueInterface $queue, $results)
     {
         foreach ($queue as $position => $item) {
-            $action   = $item['action'];
             $callback = $item['callback'];
 
             if (is_callable($callback)) {
-                $callback($results[$position], $action);
+                $callback($results[$position]);
             }
         }
     }
