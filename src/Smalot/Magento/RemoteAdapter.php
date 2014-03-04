@@ -282,7 +282,7 @@ class RemoteAdapter implements RemoteAdapterInterface
             $callback = $item['callback'];
 
             if (is_callable($callback)) {
-                $callback($results[$position]);
+                call_user_func($callback, $results[$position]);
             }
         }
     }
