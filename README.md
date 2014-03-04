@@ -11,6 +11,7 @@ Features:
 
 **Note:** This library is not related to [Magento Company](http://magento.com/).
 
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/smalot/magento-client/badges/quality-score.png?s=c95f997f16707af6966dc56f82ac2361778c3b4a)](https://scrutinizer-ci.com/g/smalot/magento-client/)
 [![Build Status](https://travis-ci.org/smalot/magento-client.png?branch=master)](https://travis-ci.org/smalot/magento-client)
 [![Total Downloads](https://poser.pugx.org/smalot/magento-client/downloads.png)](https://packagist.org/packages/smalot/magento-client)
 [![Current Version](https://poser.pugx.org/smalot/magento-client/v/stable.png)](https://packagist.org/packages/smalot/magento-client)
