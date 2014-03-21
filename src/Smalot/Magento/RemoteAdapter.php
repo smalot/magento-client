@@ -174,7 +174,7 @@ class RemoteAdapter implements RemoteAdapterInterface
     public function logout()
     {
         if (null !== $this->sessionId) {
-            $this->call(new Action('logout'), false);
+            $this->soapClient->endSession($this->sessionId);
             $this->sessionId = null;
 
             return true;
