@@ -14,7 +14,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Smalot\Magento\Catalog;
+namespace Smalot\Magento\CatalogInventory;
 
 use Smalot\Magento\ActionInterface;
 use Smalot\Magento\MagentoModuleAbstract;
