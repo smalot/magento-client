@@ -33,6 +33,6 @@ class CustomerGroup extends MagentoModuleAbstract
      */
     public function getGroupList()
     {
-        return $this->__createAction('customer_group.ist', func_get_args());
+        return $this->__createAction('customer_group.list', func_get_args());
     }
 }
