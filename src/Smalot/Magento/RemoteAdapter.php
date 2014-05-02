@@ -31,6 +31,7 @@ class RemoteAdapter implements RemoteAdapterInterface
         'connection_timeout' => 15,
         'keep_alive'         => true,
         'compression'        => true,
+        'features'           => SOAP_SINGLE_ELEMENT_ARRAYS,
     );
 
     /**
