@@ -84,7 +84,7 @@ class RemoteAdapter implements RemoteAdapterInterface
         $this->autoLogin = $autoLogin;
 
         $this->setOptions($options);
-        $this->soapClient = new \SoapClient($this->wsdl, $this->getOptions());
+        @$this->soapClient = new \SoapClient($this->wsdl, $this->getOptions());
     }
 
     /**
