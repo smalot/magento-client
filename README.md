@@ -2,6 +2,12 @@
 
 This library implements the [Magento](http://www.magentocommerce.com/) SOAP v1 (standard) API.
 
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/smalot/magento-client/badges/quality-score.png?s=c95f997f16707af6966dc56f82ac2361778c3b4a)](https://scrutinizer-ci.com/g/smalot/magento-client/)
+[![Build Status](https://travis-ci.org/smalot/magento-client.png?branch=master)](https://travis-ci.org/smalot/magento-client)
+[![Total Downloads](https://poser.pugx.org/smalot/magento-client/downloads.png)](https://packagist.org/packages/smalot/magento-client)
+[![Current Version](https://poser.pugx.org/smalot/magento-client/v/stable.png)](https://packagist.org/packages/smalot/magento-client)
+[![License](https://poser.pugx.org/smalot/magento-client/license.png)](https://packagist.org/packages/smalot/magento-client)
+
 Features:
 
 - allows wrappers
@@ -10,11 +16,6 @@ Features:
 - auto-updated via [composer](http://www.getcomposer.org) packaging ([packagist.org](http://www.packagist.org))
 
 **Note:** This library is not related to [Magento Company](http://magento.com/).
-
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/smalot/magento-client/badges/quality-score.png?s=c95f997f16707af6966dc56f82ac2361778c3b4a)](https://scrutinizer-ci.com/g/smalot/magento-client/)
-[![Build Status](https://travis-ci.org/smalot/magento-client.png?branch=master)](https://travis-ci.org/smalot/magento-client)
-[![Total Downloads](https://poser.pugx.org/smalot/magento-client/downloads.png)](https://packagist.org/packages/smalot/magento-client)
-[![Current Version](https://poser.pugx.org/smalot/magento-client/v/stable.png)](https://packagist.org/packages/smalot/magento-client)
 
 # Documentation
 
