@@ -55,22 +55,3 @@ Check a customer `password`:
 ```
 
 ### update
-
-## Complex filters structure
-
-The following filter will select all products updated after '2013-11-19 10:00:00'.
-
-``` php
-<?php
-  $filters = array(
-    'complex_filter' => array(
-      (object) array(
-        'key'   => 'updated_at',
-        'value' => (object) array(
-          'key'   => 'gt',
-          'value' => '2013-11-19 10:00:00',
-        ),
-      ),
-    ),
-  );
-```
