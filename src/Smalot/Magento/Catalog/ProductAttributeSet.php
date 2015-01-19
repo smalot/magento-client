@@ -38,7 +38,7 @@ class ProductAttributeSet extends MagentoModuleAbstract
      */
     public function attributeAdd($attributeId, $attributeSetId, $attributeGroupId = null, $sortOrder = null)
     {
-        return $this->create('product_attribute_set.attributeAdd', func_get_args());
+        return $this->__createAction('product_attribute_set.attributeAdd', func_get_args());
     }
 
     /**
