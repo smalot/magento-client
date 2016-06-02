@@ -93,7 +93,7 @@ class OrderShipment extends MagentoModuleAbstract
      */
     public function getInfo($shipmentIncrementId)
     {
-        return $this->__createAction('salesOrderShipmentInfo', func_get_args());
+        return $this->__createAction('order_shipment.info', func_get_args());
     }
 
     /**
